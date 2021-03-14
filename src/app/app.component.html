@@ -1,0 +1,57 @@
+<nz-layout class="app-layout">
+  <nz-sider
+    class="menu-sidebar"
+    nzCollapsible
+    nzWidth="256px"
+    nzBreakpoint="md"
+    [(nzCollapsed)]="isCollapsed"
+    [nzTrigger]="null"
+  >
+    <div class="sidebar-logo">
+      <a href="https://ng.ant.design/" target="_blank">
+        <img src="../assets/logo2.png" alt="logo" />
+        <h1>Van Tech Company</h1>
+      </a>
+    </div>
+    <ul
+      nz-menu
+      nzTheme="dark"
+      nzMode="inline"
+      [nzInlineCollapsed]="isCollapsed"
+    >
+      <li nz-menu-item nzMatchRouter>
+        <i nz-icon nzType="dashboard" nzTheme="outline"></i>
+        <a routerLink="/welcome">Welcome</a>
+      </li>
+      <li nz-submenu nzTitle="Categories" nzIcon="laptop">
+        <ul>
+          <li nz-menu-item nzMatchRouter *ngFor="let category of categories">
+            <a
+              [routerLink]="['/products']"
+              [queryParams]="{ id_category: category._id }"
+              >{{ category.name }}</a
+            >
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </nz-sider>
+  <nz-layout>
+    <nz-header>
+      <div class="app-header">
+        <span class="header-trigger" (click)="isCollapsed = !isCollapsed">
+          <i
+            class="trigger"
+            nz-icon
+            [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"
+          ></i>
+        </span>
+      </div>
+    </nz-header>
+    <nz-content>
+      <div class="inner-content">
+        <router-outlet></router-outlet>
+      </div>
+    </nz-content>
+  </nz-layout>
+</nz-layout>

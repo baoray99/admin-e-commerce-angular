@@ -1,0 +1,23 @@
+<nz-drawer
+  *ngIf="data"
+  [nzClosable]="false"
+  [nzVisible]="visible"
+  nzPlacement="right"
+  nzWidth="800px"
+  nzTitle="{{ data.category.name | uppercase }}"
+  (nzOnClose)="onClose()"
+>
+  <p><span>Product's name: </span>{{ data.name }}</p>
+  <nz-divider></nz-divider>
+  <nz-carousel nzEffect="scrollx">
+    <div nz-carousel-content *ngFor="let image of data.image; let i = index">
+      <img src="{{ image }}" alt="product's image" height="100%" width="100%" />
+    </div>
+  </nz-carousel>
+  <nz-divider></nz-divider>
+  <nz-descriptions nzTitle="Product's details" *ngIf="keys.length > 0">
+    <nz-descriptions-item *ngFor="let key of keys" nzTitle="{{ key }}">{{
+      lodash.get(data.product_detail, key)
+    }}</nz-descriptions-item>
+  </nz-descriptions>
+</nz-drawer>
