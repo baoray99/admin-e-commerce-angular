@@ -7,17 +7,39 @@
   nzTitle="{{ data.category.name | uppercase }}"
   (nzOnClose)="onClose()"
 >
-  <p><span>Product's name: </span>{{ data.name }}</p>
+  <nz-descriptions>
+    <nz-descriptions-item nzTitle="Product's name">{{
+      data.name
+    }}</nz-descriptions-item>
+  </nz-descriptions>
   <nz-divider></nz-divider>
-  <nz-carousel nzEffect="scrollx">
+  <nz-carousel nzEffect="scrollx" nzAutoPlay="true" [nzDotRender]="dots">
     <div nz-carousel-content *ngFor="let image of data.image; let i = index">
       <img src="{{ image }}" alt="product's image" height="100%" width="100%" />
     </div>
   </nz-carousel>
+  <ng-template #dots>
+    <button
+      style="
+        display: block;
+        height: 10px;
+        background: black;
+        width: 100%;
+        border-radius: 5px;
+        outline: none;
+      "
+    ></button>
+  </ng-template>
   <nz-divider></nz-divider>
   <nz-descriptions nzTitle="Product's details" *ngIf="keys.length > 0">
     <nz-descriptions-item *ngFor="let key of keys" nzTitle="{{ key }}">{{
       lodash.get(data.product_detail, key)
     }}</nz-descriptions-item>
   </nz-descriptions>
+  <nz-divider></nz-divider>
+  <nz-descriptions>
+    <nz-descriptions-item nzTitle="Description">{{
+      data.description
+    }}</nz-descriptions-item></nz-descriptions
+  >
 </nz-drawer>

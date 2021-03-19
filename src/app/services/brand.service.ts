@@ -1,23 +1,21 @@
-import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
-import { Category } from '../models/category.models';
+import { Brand } from '../models/brand.models';
 import { catchError } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
 })
-export class CategoryService {
-  private static readonly apiURL =
-    'https://dacnpm-test.herokuapp.com/categories';
+export class BrandService {
+  private static readonly apiURL = 'https://dacnpm-test.herokuapp.com/brands';
   constructor(private httpClient: HttpClient) {}
   errorHandle(error: HttpErrorResponse) {
     return throwError(error.message || 'Server Error');
   }
-
-  getCategories(): Observable<Category[]> {
+  getBrands(): Observable<Brand[]> {
     return this.httpClient
-      .get<Category[]>(CategoryService.apiURL)
+      .get<Brand[]>(BrandService.apiURL)
       .pipe(catchError(this.errorHandle));
   }
 }

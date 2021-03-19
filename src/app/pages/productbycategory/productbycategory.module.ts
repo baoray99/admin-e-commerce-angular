@@ -6,6 +6,7 @@ import { ProductbycategoryComponent } from './productbycategory.component';
 import { TableProductsComponent } from '../../components/table-products/table-products.component';
 import { ProductDetailsComponent } from '../../components/product-details/product-details.component';
 
+
 import { NzTableModule } from 'ng-zorro-antd/table';
 import { NzDividerModule } from 'ng-zorro-antd/divider';
 import { NzButtonModule } from 'ng-zorro-antd/button';

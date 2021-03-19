@@ -1,0 +1,189 @@
+<nz-spin [nzSpinning]="data ? false : true"></nz-spin>
+<form *ngIf="data" nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
+  <nz-divider nzText="Details" nzOrientation="left"></nz-divider>
+  <nz-form-item>
+    <nz-form-label [nzSm]="6" nzRequired nzFor="name">Name</nz-form-label>
+    <nz-form-control [nzSm]="14" nzErrorTip="Please input your name">
+      <input
+        type="text"
+        [ngModel]="data.name"
+        nz-input
+        formControlName="name"
+      />
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSm]="6" nzRequired nzFor="brand">Brand</nz-form-label>
+    <nz-form-control [nzSm]="14" nzErrorTip="Please input your name">
+      <nz-select
+        nzShowSearch
+        nzAllowClear
+        nzPlaceHolder="Select a person"
+        formControlName="brand"
+        nzPlaceHolder="{{ data.brand.name }}"
+        ngModel="{{ data.brand._id }}"
+      >
+        <nz-option
+          *ngFor="let brand of brands"
+          [nzLabel]="brand.name"
+          [nzValue]="brand._id"
+        ></nz-option>
+      </nz-select>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSm]="6" nzRequired nzFor="price">Price</nz-form-label>
+    <nz-form-control [nzSm]="14" nzErrorTip="Please input your name">
+      <nz-input-number
+        formControlName="price"
+        [nzMin]="2000000"
+        [nzMax]="10000000"
+        [nzStep]="1"
+        [ngModel]="data.price"
+      ></nz-input-number>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSm]="6" nzFor="sales_price">Sale Price</nz-form-label>
+    <nz-form-control [nzSm]="14" nzErrorTip="Please input your name">
+      <nz-input-number
+        formControlName="sales_price"
+        [nzMin]="2000000"
+        [nzMax]="10000000"
+        [nzStep]="1"
+        [ngModel]="data.sales_price"
+      ></nz-input-number>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSm]="6" nzRequired nzFor="quantity"
+      >Quantity</nz-form-label
+    >
+    <nz-form-control [nzSm]="14" nzErrorTip="Please input your name">
+      <nz-input-number
+        formControlName="quantity"
+        [nzMin]="1"
+        [nzMax]="100"
+        [nzStep]="1"
+        [ngModel]="data.quantity"
+      ></nz-input-number>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSm]="6" nzFor="description">Description</nz-form-label>
+    <nz-form-control [nzSm]="14" nzErrorTip="Please input your name">
+      <textarea
+        rows="6"
+        nz-input
+        ngModel="{{ data.description }}"
+        formControlName="description"
+      ></textarea>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-divider nzText="Specifications" nzOrientation="left"></nz-divider>
+  <!-- edit product detail here -->
+  <form nz-form formArrayName="product_detail">
+    <form
+      nz-form
+      *ngFor="let control of product_detail.controls; let i = index"
+      [formGroupName]="i"
+      style="display: flex; justify-content: center; width: 80%"
+    >
+      <nz-form-item style="width: 100%">
+        <nz-form-label [nzSm]="4">Property</nz-form-label>
+        <nz-form-control
+          [nzSm]="16"
+          [nzOffset]="0"
+          nzErrorTip="Please input passenger's name or delete this field."
+        >
+          <input
+            class="passenger-input"
+            nz-input
+            placeholder="placeholder"
+            [ngModel]="control.value.prop"
+            formControlName="prop"
+          />
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item style="width: 100%">
+        <nz-form-label [nzSm]="4">Value</nz-form-label>
+        <nz-form-control
+          [nzSm]="16"
+          [nzOffset]="0"
+          nzErrorTip="Please input passenger's name or delete this field."
+        >
+          <input
+            class="passenger-input"
+            nz-input
+            placeholder="placeholder"
+            [ngModel]="control.value.val"
+            formControlName="val"
+          />
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <i
+          nz-icon
+          [nzType]="'delete'"
+          class="dynamic-delete-button"
+          (click)="removeField(i, $event)"
+        ></i>
+      </nz-form-item>
+    </form>
+    <nz-form-item style="display: flex; justify-content: center">
+      <button
+        nz-button
+        nzType="dashed"
+        class="add-button"
+        (click)="addField($event)"
+      >
+        <i nz-icon nzType="plus"></i>
+        Add field
+      </button>
+    </nz-form-item>
+  </form>
+  <nz-divider nzText="Images" nzOrientation="left"></nz-divider>
+  <nz-form-item>
+    <nz-form-control [nzSm]="{ span: 24, offset: 1 }">
+      <form formArrayName="image">
+        <div class="box">
+          <div
+            class="container"
+            *ngFor="let control of image.controls; let i = index"
+            formGroupName="{{ i }}"
+          >
+            <img src="{{ control.value.url }}" alt="Avatar" class="image" />
+            <div class="middle">
+              <button class="text" (click)="deleteImg(i, $event)">
+                <i nz-icon nzType="delete"></i>
+              </button>
+            </div>
+          </div>
+          <label class="custom-file-upload">
+            <i nz-icon nzType="plus"></i>
+            <input type="file" class="add-image" (change)="upload($event)"
+          /></label>
+        </div>
+        <div *ngIf="currentFileUpload" class="progress mt-2">
+          <div
+            class="progress-bar progress-bar-info"
+            role="progressbar"
+            attr.aria-valuenow="{{ percentage }}"
+            aria-valuemin="0"
+            aria-valuemax="100"
+            [ngStyle]="{ width: percentage + '%' }"
+          >
+            {{ percentage }}%
+          </div>
+        </div>
+      </form>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-control [nzSm]="{ span: 20, offset: 2 }">
+      <button nz-button nzType="primary" [nzLoading]="loading">
+        {{ loading ? "Submitting..." : "Submit" }}
+      </button>
+    </nz-form-control>
+  </nz-form-item>
+</form>

@@ -1,7 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Product } from 'src/app/models/product.models';
-import  'lodash';
-declare var _:any;
+import 'lodash';
+declare var _: any;
 @Component({
   selector: 'app-product-details',
   templateUrl: './product-details.component.html',
@@ -10,6 +10,7 @@ declare var _:any;
 export class ProductDetailsComponent {
   // @Input('visible')
   // _visible: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+
   @Input('data')
   set data(data: Product) {
     this._data = data;
@@ -21,7 +22,8 @@ export class ProductDetailsComponent {
   private _data: Product;
   // dung get set de gen du lieu lien tuc
   constructor() {}
-  lodash=_;
+
+  lodash = _;
   visible = false;
   keys = [];
   onOpen() {

@@ -19,9 +19,14 @@
       nzMode="inline"
       [nzInlineCollapsed]="isCollapsed"
     >
-      <li nz-menu-item nzMatchRouter>
-        <i nz-icon nzType="dashboard" nzTheme="outline"></i>
-        <a routerLink="/welcome">Welcome</a>
+      <li
+        nz-menu-item
+        nzMatchRouter
+        routerLink="/welcome"
+        style="outline: none"
+      >
+        <i nz-icon nzType="dashboard"></i>
+        <span>Welcome</span>
       </li>
       <li nz-submenu nzTitle="Categories" nzIcon="laptop">
         <ul>

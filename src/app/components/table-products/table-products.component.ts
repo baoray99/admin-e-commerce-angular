@@ -19,20 +19,14 @@ export class TableProductsComponent implements OnInit {
     private productService: ProductService
   ) {
     this.route.queryParamMap.subscribe((query) => {
-      this.isLoading = true;
-      setTimeout(() => {
-        this.getProducts(query.get('id_category'));
-        this.isLoading = false;
-      }, 2000);
+      this.getProducts(query.get('id_category'));
     });
   }
   // visible: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   //dung behavior de bat dong bo visible cho component con
-  isLoading = false;
   listOfData: Product[];
   dataProduct: Product;
   nzTableLayout: NzTableLayout = 'auto';
-
   ngOnInit(): void {}
   getProducts(id: string) {
     this.productService

@@ -15,6 +15,13 @@ const routes: Routes = [
         (m) => m.ProductbycategoryModule
       ),
   },
+  {
+    path: 'product/edit',
+    loadChildren: () =>
+      import('./pages/edit-product-page/edit-product-page.module').then(
+        (m) => m.EditProductPageModule
+      ),
+  },
 ];
 
 @NgModule({

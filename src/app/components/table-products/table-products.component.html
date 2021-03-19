@@ -1,7 +1,7 @@
 <nz-table
   #basicTable
   [nzData]="listOfData"
-  [nzLoading]="isLoading"
+  [nzLoading]="listOfData ? false : true"
   [nzTableLayout]="nzTableLayout"
 >
   <thead>
@@ -26,11 +26,15 @@
           More Details
         </button>
         <nz-divider nzType="vertical"></nz-divider>
-        <button nz-button nzType="primary">Edit</button>
+        <button nz-button nzType="primary">
+          <a routerLink="/product/edit" [queryParams]="{ id: data._id }"
+            >Edit</a
+          >
+        </button>
         <nz-divider nzType="vertical"></nz-divider>
         <button nz-button nzType="primary" nzDanger>Delete</button>
       </td>
     </tr>
   </tbody>
 </nz-table>
-<app-product-details #product [data]="dataProduct" ></app-product-details>
+<app-product-details #product [data]="dataProduct"></app-product-details>
