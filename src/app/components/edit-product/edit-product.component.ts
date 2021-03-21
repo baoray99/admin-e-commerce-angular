@@ -9,6 +9,8 @@ import 'lodash';
 import { ImageService } from 'src/app/services/image.service';
 import { ImageUpload } from 'src/app/models/imageUpload.models';
 declare var _: any;
+import { NzMessageService } from 'ng-zorro-antd/message';
+
 
 @Component({
   selector: 'app-edit-product',
@@ -19,6 +21,9 @@ export class EditProductComponent implements OnInit {
   validateForm!: FormGroup;
   lodash = _;
   loading = false;
+  editSuccess(){
+    this.message.success('Update product successfully!')
+  }
   addField(e?: MouseEvent): void {
     if (e) {
       e.preventDefault();
@@ -37,47 +42,50 @@ export class EditProductComponent implements OnInit {
     }
   }
   submitForm(): void {
-    this.loading=true;
     this.product_detail.controls.forEach((control) => {
       control.get('prop').markAsDirty();
       control.get('prop').updateValueAndValidity();
       control.get('val').markAsDirty();
       control.get('val').updateValueAndValidity();
     });
-    const product_detail = {};
-    const image = [];
-    this.validateForm.value.product_detail.forEach((detail) => {
-      product_detail[detail.prop] = detail.val;
-    });
-    this.validateForm.value.image.forEach((img) => {
-      image.push(img.url);
-    });
-    const editedProduct = {
-      name: this.validateForm.value.name,
-      brand: this.validateForm.value.brand,
-      price: this.validateForm.value.price,
-      sales_price: this.validateForm.value.sales_price,
-      quantity: this.validateForm.value.quantity,
-      description: this.validateForm.value.description,
-      product_detail: product_detail,
-      image: image,
-    };
-    this.productService.updateProduct(this.data._id, editedProduct).subscribe(
-      (res) => {
-        this.loading=false
-        console.log('success');
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
+    if (this.validateForm.valid) {
+      this.loading = true;
+      const product_detail = {};
+      const image = [];
+      this.validateForm.value.product_detail.forEach((detail) => {
+        product_detail[detail.prop] = detail.val;
+      });
+      this.validateForm.value.image.forEach((img) => {
+        image.push(img.url);
+      });
+      const editedProduct = {
+        name: this.validateForm.value.name,
+        brand: this.validateForm.value.brand,
+        price: this.validateForm.value.price,
+        sales_price: this.validateForm.value.sales_price,
+        quantity: this.validateForm.value.quantity,
+        description: this.validateForm.value.description,
+        product_detail: product_detail,
+        image: image,
+      };
+      this.productService.updateProduct(this.data._id, editedProduct).subscribe(
+        (res) => {
+          this.loading = false;
+          this.editSuccess();
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
+    }
   }
   constructor(
     private productService: ProductService,
     private brandService: BrandService,
     private route: ActivatedRoute,
     private fb: FormBuilder,
-    private imageServices: ImageService
+    private imageServices: ImageService,
+    private message: NzMessageService
   ) {}
   data: Product;
   brands: Brand[];

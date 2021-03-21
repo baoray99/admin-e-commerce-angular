@@ -1,0 +1,99 @@
+[nz-form] {
+    max-width: 1000px;
+    margin: 0 auto;
+    button {
+      margin-left: 8px;
+    }
+    nz-select {
+      width: 200px;
+    }
+    .dynamic-delete-button {
+      cursor: pointer;
+      position: relative;
+      top: 4px;
+      font-size: 24px;
+      color: #999;
+      transition: all 0.3s;
+    }
+  
+    .dynamic-delete-button:hover {
+      color: #777;
+      transform: scale(1.05, 1.05);
+    }
+    .passenger-input {
+      width: 100%;
+      margin-right: 8px;
+    }
+    .add-button {
+      width: 40%;
+    }
+    .box {
+      display: flex;
+      align-items: center;
+    }
+    .container {
+      position: relative;
+      width: 200px;
+    }
+  
+    .image {
+      opacity: 1;
+      display: block;
+      width: 100%;
+      height: auto;
+      transition: 0.5s ease;
+      backface-visibility: hidden;
+    }
+  
+    .middle {
+      transition: 0.5s ease;
+      opacity: 0;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      margin: 0 10px;
+      transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+      text-align: center;
+    }
+  
+    .container:hover .image {
+      opacity: 0.3;
+    }
+  
+    .container:hover .middle {
+      opacity: 1;
+    }
+  
+    .text {
+      background-color: deepskyblue;
+      color: white;
+      font-size: 16px;
+      padding: 10px 20px;
+      outline: none;
+      border: none;
+    }
+    .add-image {
+      opacity: 1;
+      display: block;
+      width: 200px;
+      height: 200px;
+      border: 1px dashed rgba(0, 0, 0, 0.1);
+    }
+    .custom-file-upload {
+      border: 1px dashed rgba(0, 0, 0, 0.1);
+      display: inline-block;
+      padding: 16px 32px;
+      margin: 0 10px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      &:hover {
+        border: 1px dashed royalblue;
+        color: royalblue;
+      }
+    }
+    input[type="file"] {
+      display: none;
+    }
+  }
+  

@@ -1,15 +1,10 @@
-<nz-spin [nzSpinning]="data ? false : true"></nz-spin>
-<form *ngIf="data" nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
+<!-- <nz-spin [nzSpinning]="data ? false : true"></nz-spin> -->
+<form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
   <nz-divider nzText="Details" nzOrientation="left"></nz-divider>
   <nz-form-item>
     <nz-form-label [nzSm]="6" nzRequired nzFor="name">Name</nz-form-label>
     <nz-form-control [nzSm]="14" nzErrorTip="Please input your name">
-      <input
-        type="text"
-        [ngModel]="data.name"
-        nz-input
-        formControlName="name"
-      />
+      <input type="text" nz-input />
     </nz-form-control>
   </nz-form-item>
   <nz-form-item>
@@ -20,8 +15,6 @@
         nzAllowClear
         nzPlaceHolder="Select a person"
         formControlName="brand"
-        nzPlaceHolder="{{ data.brand.name }}"
-        ngModel="{{ data.brand._id }}"
       >
         <nz-option
           *ngFor="let brand of brands"
@@ -35,11 +28,9 @@
     <nz-form-label [nzSm]="6" nzRequired nzFor="price">Price</nz-form-label>
     <nz-form-control [nzSm]="14" nzErrorTip="Please input your name">
       <nz-input-number
-        formControlName="price"
         [nzMin]="2000000"
         [nzMax]="10000000"
         [nzStep]="1"
-        [ngModel]="data.price"
       ></nz-input-number>
     </nz-form-control>
   </nz-form-item>
@@ -47,11 +38,9 @@
     <nz-form-label [nzSm]="6" nzFor="sales_price">Sale Price</nz-form-label>
     <nz-form-control [nzSm]="14" nzErrorTip="Please input your name">
       <nz-input-number
-        formControlName="sales_price"
         [nzMin]="2000000"
         [nzMax]="10000000"
         [nzStep]="1"
-        [ngModel]="data.sales_price"
       ></nz-input-number>
     </nz-form-control>
   </nz-form-item>
@@ -60,24 +49,13 @@
       >Quantity</nz-form-label
     >
     <nz-form-control [nzSm]="14" nzErrorTip="Please input your name">
-      <nz-input-number
-        formControlName="quantity"
-        [nzMin]="1"
-        [nzMax]="100"
-        [nzStep]="1"
-        [ngModel]="data.quantity"
-      ></nz-input-number>
+      <nz-input-number [nzMin]="1" [nzMax]="100" [nzStep]="1"></nz-input-number>
     </nz-form-control>
   </nz-form-item>
   <nz-form-item>
     <nz-form-label [nzSm]="6" nzFor="description">Description</nz-form-label>
     <nz-form-control [nzSm]="14" nzErrorTip="Please input your name">
-      <textarea
-        rows="6"
-        nz-input
-        ngModel="{{ data.description }}"
-        formControlName="description"
-      ></textarea>
+      <textarea rows="6" nz-input></textarea>
     </nz-form-control>
   </nz-form-item>
   <nz-divider nzText="Specifications" nzOrientation="left"></nz-divider>
@@ -162,12 +140,14 @@
           <label class="custom-file-upload">
             <i
               nz-icon
-              nzType="{{ currentFileUpload && percentage !== 100 ? 'loading' : 'plus' }}"
+              nzType="{{
+                currentFileUpload && percentage !== 100 ? 'loading' : 'plus'
+              }}"
             ></i>
             <input type="file" class="add-image" (change)="upload($event)"
           /></label>
         </div>
-        <!-- <div *ngIf="currentFileUpload" class="progress mt-2">
+        <div *ngIf="currentFileUpload" class="progress mt-2">
           <div
             class="progress-bar progress-bar-info"
             role="progressbar"
@@ -178,13 +158,13 @@
           >
             {{ percentage }}%
           </div>
-        </div> -->
+        </div>
       </form>
     </nz-form-control>
   </nz-form-item>
   <nz-form-item>
     <nz-form-control [nzSm]="{ span: 20, offset: 2 }">
-      <button nz-button nzType="primary" [nzLoading]="loading" >
+      <button nz-button nzType="primary">
         {{ loading ? "Submitting..." : "Submit" }}
       </button>
     </nz-form-control>

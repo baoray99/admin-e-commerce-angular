@@ -6,13 +6,13 @@ import { ProductbycategoryComponent } from './productbycategory.component';
 import { TableProductsComponent } from '../../components/table-products/table-products.component';
 import { ProductDetailsComponent } from '../../components/product-details/product-details.component';
 
-
 import { NzTableModule } from 'ng-zorro-antd/table';
 import { NzDividerModule } from 'ng-zorro-antd/divider';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzDrawerModule } from 'ng-zorro-antd/drawer';
 import { NzCarouselModule } from 'ng-zorro-antd/carousel';
 import { NzDescriptionsModule } from 'ng-zorro-antd/descriptions';
+import { NzIconModule } from 'ng-zorro-antd/icon';
 
 @NgModule({
   declarations: [
@@ -29,8 +29,9 @@ import { NzDescriptionsModule } from 'ng-zorro-antd/descriptions';
     NzDrawerModule,
     NzCarouselModule,
     NzDescriptionsModule,
+    NzIconModule,
   ],
-  exports: [ProductbycategoryComponent],
+  exports: [ProductbycategoryComponent, NzIconModule],
   bootstrap: [TableProductsComponent],
 })
 export class ProductbycategoryModule {}

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { NzFormModule } from 'ng-zorro-antd/form';
 import { NzInputModule } from 'ng-zorro-antd/input';
@@ -10,17 +11,16 @@ import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzDividerModule } from 'ng-zorro-antd/divider';
 import { NzCardModule } from 'ng-zorro-antd/card';
-import { NzMessageModule } from 'ng-zorro-antd/message';
 
-import { EditProductPageRoutingModule } from './edit-product-page-routing.module';
-import { EditProductPageComponent } from './edit-product-page.component';
-import { EditProductComponent } from '../../components/edit-product/edit-product.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { AddProductPageRoutingModule } from './add-product-page-routing.module';
+import { AddProductPageComponent } from './add-product-page.component';
+import { AddProductComponent } from '../../components/add-product/add-product.component';
 
 @NgModule({
-  declarations: [EditProductPageComponent, EditProductComponent],
+  declarations: [AddProductPageComponent, AddProductComponent],
   imports: [
-    EditProductPageRoutingModule,
+    CommonModule,
+    AddProductPageRoutingModule,
     NzFormModule,
     ReactiveFormsModule,
     NzInputModule,
@@ -32,8 +32,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     NzIconModule,
     NzDividerModule,
     NzCardModule,
-    NzMessageModule
   ],
-  exports: [EditProductPageComponent, NzIconModule],
+  exports: [AddProductPageComponent, NzIconModule],
 })
-export class EditProductPageModule {}
+export class AddProductPageModule {}

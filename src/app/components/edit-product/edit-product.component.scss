@@ -51,6 +51,7 @@
     position: absolute;
     top: 50%;
     left: 50%;
+    margin: 0 10px;
     transform: translate(-50%, -50%);
     -ms-transform: translate(-50%, -50%);
     text-align: center;
@@ -83,10 +84,10 @@
     border: 1px dashed rgba(0, 0, 0, 0.1);
     display: inline-block;
     padding: 16px 32px;
-    margin-left: 10px;
+    margin: 0 10px;
     cursor: pointer;
     transition: all 0.3s ease;
-    &:hover{
+    &:hover {
       border: 1px dashed royalblue;
       color: royalblue;
     }
