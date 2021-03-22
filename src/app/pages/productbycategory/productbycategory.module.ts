@@ -13,6 +13,8 @@ import { NzDrawerModule } from 'ng-zorro-antd/drawer';
 import { NzCarouselModule } from 'ng-zorro-antd/carousel';
 import { NzDescriptionsModule } from 'ng-zorro-antd/descriptions';
 import { NzIconModule } from 'ng-zorro-antd/icon';
+import { NzPopconfirmModule } from 'ng-zorro-antd/popconfirm';
+import { NzMessageModule } from 'ng-zorro-antd/message';
 
 @NgModule({
   declarations: [
@@ -30,6 +32,8 @@ import { NzIconModule } from 'ng-zorro-antd/icon';
     NzCarouselModule,
     NzDescriptionsModule,
     NzIconModule,
+    NzPopconfirmModule,
+    NzMessageModule
   ],
   exports: [ProductbycategoryComponent, NzIconModule],
   bootstrap: [TableProductsComponent],

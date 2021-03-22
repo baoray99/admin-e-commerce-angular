@@ -31,4 +31,14 @@ export class ProductService {
       .put<Product>(ProductService.apiGetById + id, data)
       .pipe(catchError(this.errorHandle));
   }
+  addProduct(data: any): Observable<Product> {
+    return this.httpClient
+      .post<Product>(ProductService.apiGetById, data)
+      .pipe(catchError(this.errorHandle));
+  }
+  deleteProduct(id: string): Observable<Product> {
+    return this.httpClient
+      .delete<Product>(ProductService.apiGetById + id)
+      .pipe(catchError(this.errorHandle));
+  }
 }

@@ -7,12 +7,9 @@
   nzTitle="{{ data.category.name | uppercase }}"
   (nzOnClose)="onClose()"
 >
-  <nz-descriptions>
-    <nz-descriptions-item nzTitle="Product's name">{{
-      data.name
-    }}</nz-descriptions-item>
-  </nz-descriptions>
-  <nz-divider></nz-divider>
+  <nz-divider nzText="Product's name" nzOrientation="left"></nz-divider>
+  <p>{{ data.name }}</p>
+  <nz-divider nzText="Images" nzOrientation="left"></nz-divider>
   <nz-carousel nzEffect="scrollx" nzAutoPlay="true" [nzDotRender]="dots">
     <div nz-carousel-content *ngFor="let image of data.image; let i = index">
       <img src="{{ image }}" alt="product's image" height="100%" width="100%" />
@@ -30,16 +27,12 @@
       "
     ></button>
   </ng-template>
-  <nz-divider></nz-divider>
-  <nz-descriptions nzTitle="Product's details" *ngIf="keys.length > 0">
+  <nz-divider nzText="Specifications" nzOrientation="left"></nz-divider>
+  <nz-descriptions *ngIf="keys.length > 0">
     <nz-descriptions-item *ngFor="let key of keys" nzTitle="{{ key }}">{{
       lodash.get(data.product_detail, key)
     }}</nz-descriptions-item>
   </nz-descriptions>
-  <nz-divider></nz-divider>
-  <nz-descriptions>
-    <nz-descriptions-item nzTitle="Description">{{
-      data.description
-    }}</nz-descriptions-item></nz-descriptions
-  >
+  <nz-divider nzText="Description" nzOrientation="left"></nz-divider>
+  <p>{{ data.description }}</p>
 </nz-drawer>

@@ -3,17 +3,36 @@
   <nz-divider nzText="Details" nzOrientation="left"></nz-divider>
   <nz-form-item>
     <nz-form-label [nzSm]="6" nzRequired nzFor="name">Name</nz-form-label>
-    <nz-form-control [nzSm]="14" nzErrorTip="Please input your name">
-      <input type="text" nz-input />
+    <nz-form-control [nzSm]="14" nzErrorTip="Please input product's name">
+      <input type="text" nz-input formControlName="name" />
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSm]="6" nzRequired nzFor="category"
+      >Category</nz-form-label
+    >
+    <nz-form-control [nzSm]="14" nzErrorTip="Please choose a category">
+      <nz-select
+        nzShowSearch
+        nzAllowClear
+        nzPlaceHolder="Select a category"
+        formControlName="category"
+      >
+        <nz-option
+          *ngFor="let category of categories"
+          [nzLabel]="category.name"
+          [nzValue]="category._id"
+        ></nz-option>
+      </nz-select>
     </nz-form-control>
   </nz-form-item>
   <nz-form-item>
     <nz-form-label [nzSm]="6" nzRequired nzFor="brand">Brand</nz-form-label>
-    <nz-form-control [nzSm]="14" nzErrorTip="Please input your name">
+    <nz-form-control [nzSm]="14" nzErrorTip="Please choose a brand">
       <nz-select
         nzShowSearch
         nzAllowClear
-        nzPlaceHolder="Select a person"
+        nzPlaceHolder="Select a brand"
         formControlName="brand"
       >
         <nz-option
@@ -26,21 +45,23 @@
   </nz-form-item>
   <nz-form-item>
     <nz-form-label [nzSm]="6" nzRequired nzFor="price">Price</nz-form-label>
-    <nz-form-control [nzSm]="14" nzErrorTip="Please input your name">
+    <nz-form-control [nzSm]="14" nzErrorTip="Please input price">
       <nz-input-number
         [nzMin]="2000000"
         [nzMax]="10000000"
         [nzStep]="1"
+        formControlName="price"
       ></nz-input-number>
     </nz-form-control>
   </nz-form-item>
   <nz-form-item>
     <nz-form-label [nzSm]="6" nzFor="sales_price">Sale Price</nz-form-label>
-    <nz-form-control [nzSm]="14" nzErrorTip="Please input your name">
+    <nz-form-control [nzSm]="14">
       <nz-input-number
         [nzMin]="2000000"
         [nzMax]="10000000"
         [nzStep]="1"
+        formControlName="sales_price"
       ></nz-input-number>
     </nz-form-control>
   </nz-form-item>
@@ -48,14 +69,19 @@
     <nz-form-label [nzSm]="6" nzRequired nzFor="quantity"
       >Quantity</nz-form-label
     >
-    <nz-form-control [nzSm]="14" nzErrorTip="Please input your name">
-      <nz-input-number [nzMin]="1" [nzMax]="100" [nzStep]="1"></nz-input-number>
+    <nz-form-control [nzSm]="14" nzErrorTip="Please input quantity">
+      <nz-input-number
+        [nzMin]="1"
+        [nzMax]="100"
+        [nzStep]="1"
+        formControlName="quantity"
+      ></nz-input-number>
     </nz-form-control>
   </nz-form-item>
   <nz-form-item>
     <nz-form-label [nzSm]="6" nzFor="description">Description</nz-form-label>
-    <nz-form-control [nzSm]="14" nzErrorTip="Please input your name">
-      <textarea rows="6" nz-input></textarea>
+    <nz-form-control [nzSm]="14">
+      <textarea rows="6" nz-input formControlName="description"></textarea>
     </nz-form-control>
   </nz-form-item>
   <nz-divider nzText="Specifications" nzOrientation="left"></nz-divider>
@@ -72,12 +98,12 @@
         <nz-form-control
           [nzSm]="16"
           [nzOffset]="0"
-          nzErrorTip="Please input passenger's name or delete this field."
+          nzErrorTip="Please input property."
         >
           <input
             class="passenger-input"
             nz-input
-            placeholder="placeholder"
+            placeholder="Example: CPU ..."
             [ngModel]="control.value.prop"
             formControlName="prop"
           />
@@ -88,12 +114,12 @@
         <nz-form-control
           [nzSm]="16"
           [nzOffset]="0"
-          nzErrorTip="Please input passenger's name or delete this field."
+          nzErrorTip="Please input value."
         >
           <input
             class="passenger-input"
             nz-input
-            placeholder="placeholder"
+            placeholder="Example: 1.6Ghz ..."
             [ngModel]="control.value.val"
             formControlName="val"
           />
@@ -164,7 +190,7 @@
   </nz-form-item>
   <nz-form-item>
     <nz-form-control [nzSm]="{ span: 20, offset: 2 }">
-      <button nz-button nzType="primary">
+      <button nz-button nzType="primary" [nzLoading]="loading">
         {{ loading ? "Submitting..." : "Submit" }}
       </button>
     </nz-form-control>

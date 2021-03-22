@@ -1,10 +1,13 @@
 <button nz-button nzType="dashed" [routerLink]="['/product/add']">
   <i nz-icon nzType="plus"></i> Add Product
 </button>
+<div class="search-nav">
+  
+</div>
 <nz-table
   #basicTable
   [nzData]="listOfData"
-  [nzLoading]="listOfData ? false : true"
+  [nzLoading]="loading"
   [nzTableLayout]="nzTableLayout"
 >
   <thead>
@@ -35,7 +38,18 @@
           >
         </button>
         <nz-divider nzType="vertical"></nz-divider>
-        <button nz-button nzType="primary" nzDanger>Delete</button>
+        <button
+          nz-popconfirm
+          nzPopconfirmTitle="Are you sure delete this product?"
+          nzPopconfirmPlacement="bottom"
+          (nzOnConfirm)="confirm(data._id)"
+          (nzOnCancel)="cancel()"
+          nz-button
+          nzType="primary"
+          nzDanger
+        >
+          Delete
+        </button>
       </td>
     </tr>
   </tbody>

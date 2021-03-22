@@ -3,7 +3,7 @@
   <nz-divider nzText="Details" nzOrientation="left"></nz-divider>
   <nz-form-item>
     <nz-form-label [nzSm]="6" nzRequired nzFor="name">Name</nz-form-label>
-    <nz-form-control [nzSm]="14" nzErrorTip="Please input your name">
+    <nz-form-control [nzSm]="14" nzErrorTip="Please input product's name">
       <input
         type="text"
         [ngModel]="data.name"
@@ -14,11 +14,11 @@
   </nz-form-item>
   <nz-form-item>
     <nz-form-label [nzSm]="6" nzRequired nzFor="brand">Brand</nz-form-label>
-    <nz-form-control [nzSm]="14" nzErrorTip="Please input your name">
+    <nz-form-control [nzSm]="14" nzErrorTip="Please choose a brand">
       <nz-select
         nzShowSearch
         nzAllowClear
-        nzPlaceHolder="Select a person"
+        nzPlaceHolder="Select a brand"
         formControlName="brand"
         nzPlaceHolder="{{ data.brand.name }}"
         ngModel="{{ data.brand._id }}"
@@ -33,7 +33,7 @@
   </nz-form-item>
   <nz-form-item>
     <nz-form-label [nzSm]="6" nzRequired nzFor="price">Price</nz-form-label>
-    <nz-form-control [nzSm]="14" nzErrorTip="Please input your name">
+    <nz-form-control [nzSm]="14" nzErrorTip="Please input price">
       <nz-input-number
         formControlName="price"
         [nzMin]="2000000"
@@ -45,7 +45,7 @@
   </nz-form-item>
   <nz-form-item>
     <nz-form-label [nzSm]="6" nzFor="sales_price">Sale Price</nz-form-label>
-    <nz-form-control [nzSm]="14" nzErrorTip="Please input your name">
+    <nz-form-control [nzSm]="14" nzErrorTip="Please input sale price">
       <nz-input-number
         formControlName="sales_price"
         [nzMin]="2000000"
@@ -59,7 +59,7 @@
     <nz-form-label [nzSm]="6" nzRequired nzFor="quantity"
       >Quantity</nz-form-label
     >
-    <nz-form-control [nzSm]="14" nzErrorTip="Please input your name">
+    <nz-form-control [nzSm]="14" nzErrorTip="Please input quantity">
       <nz-input-number
         formControlName="quantity"
         [nzMin]="1"
@@ -71,7 +71,7 @@
   </nz-form-item>
   <nz-form-item>
     <nz-form-label [nzSm]="6" nzFor="description">Description</nz-form-label>
-    <nz-form-control [nzSm]="14" nzErrorTip="Please input your name">
+    <nz-form-control [nzSm]="14" nzErrorTip="Please input description">
       <textarea
         rows="6"
         nz-input
@@ -94,12 +94,12 @@
         <nz-form-control
           [nzSm]="16"
           [nzOffset]="0"
-          nzErrorTip="Please input passenger's name or delete this field."
+          nzErrorTip="Please input property."
         >
           <input
             class="passenger-input"
             nz-input
-            placeholder="placeholder"
+            placeholder="Example: CPU ..."
             [ngModel]="control.value.prop"
             formControlName="prop"
           />
@@ -110,12 +110,12 @@
         <nz-form-control
           [nzSm]="16"
           [nzOffset]="0"
-          nzErrorTip="Please input passenger's name or delete this field."
+          nzErrorTip="Please input value."
         >
           <input
             class="passenger-input"
             nz-input
-            placeholder="placeholder"
+            placeholder="Example: 1.6Ghz ..."
             [ngModel]="control.value.val"
             formControlName="val"
           />
@@ -162,7 +162,9 @@
           <label class="custom-file-upload">
             <i
               nz-icon
-              nzType="{{ currentFileUpload && percentage !== 100 ? 'loading' : 'plus' }}"
+              nzType="{{
+                currentFileUpload && percentage !== 100 ? 'loading' : 'plus'
+              }}"
             ></i>
             <input type="file" class="add-image" (change)="upload($event)"
           /></label>
@@ -184,7 +186,7 @@
   </nz-form-item>
   <nz-form-item>
     <nz-form-control [nzSm]="{ span: 20, offset: 2 }">
-      <button nz-button nzType="primary" [nzLoading]="loading" >
+      <button nz-button nzType="primary" [nzLoading]="loading">
         {{ loading ? "Submitting..." : "Submit" }}
       </button>
     </nz-form-control>

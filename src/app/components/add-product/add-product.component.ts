@@ -1,14 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Product } from 'src/app/models/product.models';
 import { ProductService } from 'src/app/services/product.service';
 import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
 import { Brand } from 'src/app/models/brand.models';
 import { BrandService } from 'src/app/services/brand.service';
-import 'lodash';
+
 import { ImageService } from 'src/app/services/image.service';
 import { ImageUpload } from 'src/app/models/imageUpload.models';
-declare var _: any;
+import { CategoryService } from 'src/app/services/category.service';
+import { Category } from 'src/app/models/category.models';
+
+import { NzMessageService } from 'ng-zorro-antd/message';
 
 @Component({
   selector: 'app-add-product',
@@ -17,23 +19,31 @@ declare var _: any;
 })
 export class AddProductComponent implements OnInit {
   validateForm!: FormGroup;
-  lodash = _;
   loading = false;
   selectedFiles: FileList;
   currentFileUpload: ImageUpload;
   percentage: number;
   brands: Brand[];
+  categories: Category[];
+  addSuccess() {
+    this.message.success('Add product successfully!');
+  }
   constructor(
     private productService: ProductService,
     private brandService: BrandService,
-    private route: ActivatedRoute,
+    private categoryService: CategoryService,
     private fb: FormBuilder,
-    private imageServices: ImageService
+    private imageServices: ImageService,
+    private message: NzMessageService
   ) {}
   ngOnInit() {
     this.brandService.getBrands().subscribe((data) => (this.brands = data));
+    this.categoryService
+      .getCategories()
+      .subscribe((data) => (this.categories = data));
     this.validateForm = this.fb.group({
       name: [null, [Validators.required]],
+      category: [null, Validators.required],
       brand: [null, [Validators.required]],
       price: [null, Validators.required],
       sales_price: [null],
@@ -49,8 +59,55 @@ export class AddProductComponent implements OnInit {
   get image(): FormArray {
     return this.validateForm.get('image') as FormArray;
   }
-  submitForm(): void {}
-
+  submitForm(): void {
+    for (const i in this.validateForm.controls) {
+      this.validateForm.controls[i].markAsDirty();
+      this.validateForm.controls[i].updateValueAndValidity();
+    }
+    this.product_detail.controls.forEach((control) => {
+      control.get('prop').markAsDirty();
+      control.get('prop').updateValueAndValidity();
+      control.get('val').markAsDirty();
+      control.get('val').updateValueAndValidity();
+    });
+    if (this.validateForm.valid) {
+      this.loading = true;
+      const product_detail = {};
+      const image = [];
+      this.validateForm.value.product_detail.forEach((detail) => {
+        product_detail[detail.prop] = detail.val;
+      });
+      this.validateForm.value.image.forEach((img) => {
+        image.push(img.url);
+      });
+      const product = {
+        name: this.validateForm.value.name,
+        id_category: this.validateForm.value.category,
+        category: this.categories.find(
+          (data) => (data._id = this.validateForm.value.category)
+        ),
+        id_brand: this.validateForm.value.brand,
+        brand: this.brands.find(
+          (data) => (data._id = this.validateForm.value.brand)
+        ),
+        price: this.validateForm.value.price,
+        sales_price: this.validateForm.value.sales_price,
+        quantity: this.validateForm.value.quantity,
+        description: this.validateForm.value.description,
+        product_detail: product_detail,
+        image: image,
+      };
+      this.productService.addProduct(product).subscribe(
+        (res) => {
+          this.loading = false;
+          this.addSuccess();
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
+    }
+  }
   addField(e?: MouseEvent): void {
     if (e) {
       e.preventDefault();

@@ -11,6 +11,7 @@ import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzDividerModule } from 'ng-zorro-antd/divider';
 import { NzCardModule } from 'ng-zorro-antd/card';
+import { NzMessageModule } from 'ng-zorro-antd/message';
 
 import { AddProductPageRoutingModule } from './add-product-page-routing.module';
 import { AddProductPageComponent } from './add-product-page.component';
@@ -32,6 +33,7 @@ import { AddProductComponent } from '../../components/add-product/add-product.co
     NzIconModule,
     NzDividerModule,
     NzCardModule,
+    NzMessageModule
   ],
   exports: [AddProductPageComponent, NzIconModule],
 })
