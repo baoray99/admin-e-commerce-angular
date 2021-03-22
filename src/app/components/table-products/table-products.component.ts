@@ -58,4 +58,14 @@ export class TableProductsComponent implements OnInit {
   cancel() {
     console.log('cancel');
   }
+  searchText: string = '';
+  onSearch() {
+    if (this.searchText != '') {
+      const resultSearch = this.listOfData.filter((x) =>
+        x.name.toLowerCase().includes(this.searchText.trim().toLowerCase())
+      );
+      this.listOfData = resultSearch;
+    } else
+      this.getProducts(this.route.snapshot.queryParamMap.get('id_category'));
+  } // search realtime name
 }

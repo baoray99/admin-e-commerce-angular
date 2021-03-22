@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 import { ProductbycategoryRoutingModule } from './productbycategory-routing.module';
 import { ProductbycategoryComponent } from './productbycategory.component';
@@ -15,6 +16,7 @@ import { NzDescriptionsModule } from 'ng-zorro-antd/descriptions';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzPopconfirmModule } from 'ng-zorro-antd/popconfirm';
 import { NzMessageModule } from 'ng-zorro-antd/message';
+import { NzInputModule } from 'ng-zorro-antd/input';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,9 @@ import { NzMessageModule } from 'ng-zorro-antd/message';
     NzDescriptionsModule,
     NzIconModule,
     NzPopconfirmModule,
-    NzMessageModule
+    NzMessageModule,
+    NzInputModule,
+    FormsModule
   ],
   exports: [ProductbycategoryComponent, NzIconModule],
   bootstrap: [TableProductsComponent],

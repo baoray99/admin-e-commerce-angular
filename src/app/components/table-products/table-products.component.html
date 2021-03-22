@@ -1,8 +1,32 @@
-<button nz-button nzType="dashed" [routerLink]="['/product/add']">
-  <i nz-icon nzType="plus"></i> Add Product
-</button>
 <div class="search-nav">
-  
+  <nz-input-group
+    [nzSuffix]="searchText === '' ? suffixIconSearch : inputClearTpl"
+    style="width: 30%"
+  >
+    <input
+      type="text"
+      nz-input
+      placeholder="Example: pc ..."
+      [(ngModel)]="searchText"
+      (ngModelChange)="onSearch()"
+    />
+  </nz-input-group>
+  <button nz-button nzType="dashed" [routerLink]="['/product/add']">
+    <i nz-icon nzType="plus"></i> Add Product
+  </button>
+  <ng-template #suffixIconSearch>
+    <i nz-icon nzType="search"></i>
+  </ng-template>
+  <ng-template #inputClearTpl
+    ><i
+      nz-icon
+      class="ant-input-clear-icon"
+      nzTheme="fill"
+      nzType="close-circle"
+      *ngIf="searchText"
+      (click)="searchText = ''; onSearch()"
+    ></i
+  ></ng-template>
 </div>
 <nz-table
   #basicTable
