@@ -166,7 +166,7 @@
                 currentFileUpload && percentage !== 100 ? 'loading' : 'plus'
               }}"
             ></i>
-            <input type="file" class="add-image" (change)="upload($event)"
+            <input type="file" (change)="upload($event)"
           /></label>
         </div>
         <!-- <div *ngIf="currentFileUpload" class="progress mt-2">
