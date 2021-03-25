@@ -38,22 +38,6 @@ export class MainComponent implements OnInit {
       .getCategories()
       .subscribe((data) => (this.categories = data));
   }
-
-  showModal(): void {
-    this.isVisible = true;
-  }
-
-  handleOk(): void {
-    this.isOkLoading = true;
-    setTimeout(() => {
-      this.isVisible = false;
-      this.isOkLoading = false;
-    }, 3000);
-  }
-
-  handleCancel(): void {
-    this.isVisible = false;
-  }
   validateForm!: FormGroup;
 
   submitForm(): void {
@@ -67,5 +51,9 @@ export class MainComponent implements OnInit {
         window.localStorage.setItem('token', JSON.stringify(res.accessToken));
         this.router.navigate(['']);
       });
+  }
+  logOut() {
+    window.localStorage.clear();
+    this.router.navigate(['/login']);
   }
 }

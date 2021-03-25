@@ -11,7 +11,8 @@ import {
   PlusOutline,
   DownloadOutline,
   UserOutline,
-  LockOutline
+  LockOutline,
+  LogoutOutline,
 } from '@ant-design/icons-angular/icons';
 
 const icons = [
@@ -24,7 +25,8 @@ const icons = [
   PlusOutline,
   DownloadOutline,
   UserOutline,
-  LockOutline
+  LockOutline,
+  LogoutOutline,
 ];
 
 @NgModule({

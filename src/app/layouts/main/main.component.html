@@ -43,17 +43,30 @@
   </nz-sider>
   <nz-layout>
     <nz-header>
-      <div class="app-header">
-        <span class="header-trigger" (click)="isCollapsed = !isCollapsed">
-          <i
-            class="trigger"
-            nz-icon
-            [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"
-          ></i>
-        </span>
-        <span>{{ user?.name }}</span
-        ><nz-avatar nzIcon="user" style="background-color: #87d068">
-        </nz-avatar>
+      <div
+        class="app-header"
+        style="display: flex; justify-content: space-between"
+      >
+        <div>
+          <span class="header-trigger" (click)="isCollapsed = !isCollapsed">
+            <i
+              class="trigger"
+              nz-icon
+              [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"
+            ></i>
+          </span>
+        </div>
+        <div style="margin-right: 24px">
+          <span style="margin-right: 10px">{{ user?.name }}</span>
+          <nz-avatar
+            nzIcon="user"
+            nz-dropdown
+            [nzDropdownMenu]="menu"
+            nzPlacement="bottomRight"
+            style="background-color: rgb(0, 21, 41)"
+          >
+          </nz-avatar>
+        </div>
       </div>
     </nz-header>
     <nz-content>
@@ -63,4 +76,10 @@
     </nz-content>
   </nz-layout>
 </nz-layout>
-
+<nz-dropdown-menu #menu="nzDropdownMenu">
+  <ul nz-menu>
+    <li nz-menu-item style="color: crimson;" (click)="logOut()">
+      <i nz-icon nzType="logout" nzTheme="outline"></i>Log out
+    </li>
+  </ul>
+</nz-dropdown-menu>
