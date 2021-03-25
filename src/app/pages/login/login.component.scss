@@ -1,0 +1,31 @@
+.container {
+  height: 100vh;
+  background: rgb(0, 21, 41);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .box {
+    position: relative;
+    width: 60%;
+    height: 90%;
+    background: white;
+    border-radius: 10px;
+    display: flex;
+    .left {
+      width: 50%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 10px 0 0 10px;
+    }
+    .right {
+      height: 100%;
+      width: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 0 10px 10px 0;
+    }
+  }
+}

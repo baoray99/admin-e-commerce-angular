@@ -1,39 +1,64 @@
-<form
-    nz-form
-    [formGroup]="validateForm"
-    class="login-form"
-    (ngSubmit)="submitForm()"
-  >
-    <nz-form-item>
-      <nz-form-control nzErrorTip="Please input your username!">
-        <nz-input-group nzPrefixIcon="user">
-          <input
-            type="text"
-            nz-input
-            formControlName="userName"
-            placeholder="Username"
-          />
-        </nz-input-group>
-      </nz-form-control>
-    </nz-form-item>
-    <nz-form-item>
-      <nz-form-control nzErrorTip="Please input your Password!">
-        <nz-input-group nzPrefixIcon="lock">
-          <input
-            type="password"
-            nz-input
-            formControlName="password"
-            placeholder="Password"
-          />
-        </nz-input-group>
-      </nz-form-control>
-    </nz-form-item>
+<div class="container">
+  <div class="box">
+    <div class="left">
+      <img
+        src="../../../assets/logo2.png"
+        alt="logo"
+        width="240px"
+        height="240px"
+      />
+    </div>
+    <div class="right">
+      <form
+        nz-form
+        [formGroup]="validateForm"
+        class="login-form"
+        (ngSubmit)="submitForm()"
+        style="width: 80%"
+      >
+        <nz-form-item>
+          <nz-form-control nzErrorTip="Please input your Username!">
+            <input
+              type="text"
+              nz-input
+              formControlName="userName"
+              placeholder="   Username"
+              style="
+                width: 100%;
+                height: 50px;
+                border-radius: 25px;
+                background-color: rgba(0, 0, 0, 0.1);
+              "
+            />
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-control nzErrorTip="Please input your Password!">
+            <input
+              type="password"
+              nz-input
+              formControlName="password"
+              placeholder="   Password"
+              style="
+                width: 100%;
+                height: 50px;
+                border-radius: 25px;
+                background-color: rgba(0, 0, 0, 0.1);
+              "
+            />
+          </nz-form-control>
+        </nz-form-item>
 
-    <button
-      nz-button
-      class="login-form-button login-form-margin"
-      [nzType]="'primary'"
-    >
-      Log in
-    </button>
-  </form>
+        <button
+          nz-button
+          class="login-form-button login-form-margin"
+          [nzType]="'primary'"
+          [nzLoading]="loading"
+          style="width: 100%; height: 45px; border-radius: 22.5px"
+        >
+          {{ loading ? "Logging in ..." : "Log in" }}
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
