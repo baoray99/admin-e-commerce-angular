@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Category } from './models/category.models';
 import { CategoryService } from './services/category.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AuthService } from './services/auth.service';
+import { Router } from '@angular/router';
+import { User } from './models/user.models';
 
 @Component({
   selector: 'app-root',
@@ -8,15 +12,6 @@ import { CategoryService } from './services/category.service';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
-  isCollapsed = false;
-  categories: Category[];
-  constructor(private categoryService: CategoryService) {}
-  ngOnInit() {
-    this.getCategories();
-  }
-  getCategories() {
-    this.categoryService
-      .getCategories()
-      .subscribe((data) => (this.categories = data));
-  }
+  constructor() {}
+  ngOnInit(): void {}
 }
