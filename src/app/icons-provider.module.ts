@@ -13,6 +13,7 @@ import {
   UserOutline,
   LockOutline,
   LogoutOutline,
+  CaretDownOutline
 } from '@ant-design/icons-angular/icons';
 
 const icons = [
@@ -27,6 +28,7 @@ const icons = [
   UserOutline,
   LockOutline,
   LogoutOutline,
+  CaretDownOutline
 ];
 
 @NgModule({

@@ -57,14 +57,21 @@
           </span>
         </div>
         <div style="margin-right: 24px">
-          <span style="margin-right: 10px">{{ user?.name }}</span>
-          <nz-avatar
-            nzIcon="user"
+          <span
             nz-dropdown
             [nzDropdownMenu]="menu"
             nzPlacement="bottomRight"
-            style="background-color: rgb(0, 21, 41)"
-          >
+            nzTrigger="click"
+            style="margin-right: 10px; cursor: pointer;"
+            >{{ user?.name
+            }}<i
+              nz-icon
+              nzType="caret-down"
+              nzTheme="outline"
+              style="margin-left: 5px"
+            ></i
+          ></span>
+          <nz-avatar nzIcon="user" style="background-color: rgb(0, 21, 41)">
           </nz-avatar>
         </div>
       </div>
@@ -78,7 +85,7 @@
 </nz-layout>
 <nz-dropdown-menu #menu="nzDropdownMenu">
   <ul nz-menu>
-    <li nz-menu-item style="color: crimson;" (click)="logOut()">
+    <li nz-menu-item style="color: crimson" (click)="logOut()">
       <i nz-icon nzType="logout" nzTheme="outline"></i>Log out
     </li>
   </ul>
