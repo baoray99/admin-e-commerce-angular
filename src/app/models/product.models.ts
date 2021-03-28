@@ -1,3 +1,4 @@
+
 export interface Product {
   _id: string;
   name: string;
@@ -10,3 +11,4 @@ export interface Product {
   description: string;
   image: Array<string>;
 }
+

@@ -1,0 +1,98 @@
+<div class="container">
+  <div class="navbar">
+    <div class="logo">
+      <img
+        src="../../../assets/logo2.png"
+        alt="logo"
+        width="70px"
+        height="70px"
+      />
+    </div>
+    <div class="cart">
+      <i
+        nz-icon
+        nzType="shopping-cart"
+        nzTheme="outline"
+        style="font-size: 35px; color: rgba(0, 21, 41, 0.35)"
+      ></i>
+    </div>
+  </div>
+  <div class="content-first">
+    <div class="categories">
+      <ul>
+        <li style="background-color: rgb(24, 144, 255); color: white">
+          <i
+            nz-icon
+            nzType="menu"
+            nzTheme="outline"
+            style="margin-right: 10px"
+          ></i
+          >Categories
+        </li>
+        <li *ngFor="let category of categories">{{ category.name }}</li>
+      </ul>
+    </div>
+    <div class="carousel">
+      <div class="installment-purchase">
+        <a href="#">Hướng dẫn mua hàng trả góp</a>
+      </div>
+      <nz-carousel nzAutoPlay [nzEffect]="effect">
+        <div nz-carousel-content *ngFor="let index of array">
+          <h3>{{ index }}</h3>
+        </div>
+      </nz-carousel>
+    </div>
+  </div>
+  <div class="contact-us">
+    <div>Contact Us</div>
+    <marquee> Welcome to Van Tech Company Administator Web </marquee>
+  </div>
+  <div class="laptop">
+    <div class="title">
+      <h2>LAPTOP</h2>
+      <a href="#">See All </a>
+    </div>
+    <owl-carousel-o [options]="customOptions" class="laptop-carousel">
+      <ng-template carouselSlide>
+        <div class="card">
+          <div class="box">
+            <img src="../../../assets/logo2.png" alt="image" />
+            <div class="content">alo</div>
+          </div>
+        </div>
+      </ng-template>
+      <ng-template carouselSlide>
+        <div class="card">
+          <div class="box">
+            <img src="../../../assets/logo2.png" alt="image" />
+            <div class="content">alo</div>
+          </div>
+        </div>
+      </ng-template>
+      <ng-template carouselSlide>
+        <div class="card">
+          <div class="box">
+            <img src="../../../assets/logo2.png" alt="image" />
+            <div class="content">alo</div>
+          </div>
+        </div>
+      </ng-template>
+      <ng-template carouselSlide>
+        <div class="card">
+          <div class="box">
+            <img src="../../../assets/logo2.png" alt="image" />
+            <div class="content">alo</div>
+          </div>
+        </div>
+      </ng-template>
+      <ng-template carouselSlide>
+        <div class="card">
+          <div class="box">
+            <img src="../../../assets/logo2.png" alt="image" />
+            <div class="content">alo</div>
+          </div>
+        </div>
+      </ng-template>
+    </owl-carousel-o>
+  </div>
+</div>
