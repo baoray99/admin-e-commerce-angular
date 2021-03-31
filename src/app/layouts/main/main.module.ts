@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+import { HaspermissionDirective } from '../../directives/haspermission.directive';
+
 import { NzLayoutModule } from 'ng-zorro-antd/layout';
 import { NzMenuModule } from 'ng-zorro-antd/menu';
 import { NzInputModule } from 'ng-zorro-antd/input';
@@ -13,7 +15,7 @@ import { MainRoutingModule } from './main-routing.module';
 import { MainComponent } from './main.component';
 
 @NgModule({
-  declarations: [MainComponent],
+  declarations: [MainComponent, HaspermissionDirective],
   imports: [
     CommonModule,
     MainRoutingModule,
@@ -25,7 +27,7 @@ import { MainComponent } from './main.component';
     NzInputModule,
     NzFormModule,
     NzAvatarModule,
-    NzDropDownModule
+    NzDropDownModule,
   ],
 
   bootstrap: [MainComponent],

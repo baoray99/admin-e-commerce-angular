@@ -18,7 +18,7 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
     NzLayoutModule,
     IconsProviderModule,
     NzCarouselModule,
-    CarouselModule,
+    CarouselModule
   ],
   exports: [CarouselModule],
 })

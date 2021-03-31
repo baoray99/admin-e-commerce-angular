@@ -78,24 +78,12 @@
   }
   .laptop {
     padding: 0 160px;
+    margin-top: 20px;
     .title {
       background-color: rgb(245, 245, 245);
-    }
-    .laptop-carousel {
-      padding: 0 160px;
-      height: 400px;
-      position: relative;
-      .card {
-        background-color: transparent;
-        padding: 10px 10px;
-        .box {
-          background-color: white;
-          transition: all 0.3s ease;
-          &:hover {
-            box-shadow: 0px 0px 10px -1px rgba(110, 104, 110, 1);
-          }
-        }
-      }
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
   }
 }

@@ -28,7 +28,12 @@
         <i nz-icon nzType="dashboard"></i>
         <span>Welcome</span>
       </li>
-      <li nz-submenu nzTitle="Categories" nzIcon="laptop">
+      <li
+        nz-submenu
+        nzTitle="Categories"
+        nzIcon="laptop"
+        *appHaspermission="'Admin'; user user"
+      >
         <ul>
           <li nz-menu-item nzMatchRouter *ngFor="let category of categories">
             <a
