@@ -9,33 +9,170 @@
       />
     </div>
     <div class="cart">
-      <i
-        nz-icon
-        nzType="shopping-cart"
-        nzTheme="outline"
-        style="font-size: 35px; color: rgba(0, 21, 41, 0.35)"
-      ></i>
+      <nz-input-group
+        [nzAddOnBefore]="addOnBeforeTemplate"
+        [nzSuffix]="addOnAfterTemplate"
+        nzSize="small"
+        style="width: 45%"
+      >
+        <input type="text" nz-input />
+      </nz-input-group>
+      <ng-template #addOnBeforeTemplate>
+        <nz-select [ngModel]="search">
+          <nz-option nzLabel="Tất cả danh mục" nzValue="all"></nz-option>
+          <nz-option nzLabel="Laptop" nzValue="laptop"></nz-option>
+          <nz-option nzLabel="Pc" nzValue="pc"></nz-option>
+          <nz-option nzLabel="Mouse" nzValue="mouse"></nz-option>
+          <nz-option nzLabel="Monitor" nzValue="monitor"></nz-option>
+          <nz-option nzLabel="Keyboard" nzValue="keyboard"></nz-option>
+        </nz-select>
+      </ng-template>
+      <ng-template #addOnAfterTemplate>
+        <button
+          style="
+            padding: 3px 12px;
+            border-radius: 3px;
+            background-color: rgb(24, 144, 255);
+            outline: none;
+            border: none;
+            cursor: pointer;
+          "
+        >
+          <i nz-icon nzType="search" style="color: white"></i>
+        </button>
+      </ng-template>
+      <div class="seen-product">
+        <button class="seen-product-btn">
+          Sản phẩm đã xem<i
+            nz-icon
+            nzType="caret-down"
+            nzTheme="fill"
+            style="color: white"
+          ></i>
+        </button>
+        <div class="seen-product-content"></div>
+      </div>
+      <div class="icons">
+        <div>
+          <i nz-icon nzType="thunderbolt" nzTheme="outline"></i>
+          <p>Flash sale</p>
+        </div>
+        <div>
+          <i nz-icon nzType="laptop" nzTheme="outline"></i>
+          <p>Xây dựng PC</p>
+        </div>
+        <div>
+          <i nz-icon nzType="read" nzTheme="outline"></i>
+          <p>Tin tức</p>
+        </div>
+        <div>
+          <i nz-icon nzType="shopping-cart" nzTheme="outline"></i>
+          <p>Giỏ hàng</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="navbar-scroll" [ngClass]="{ sticky: isSticky }">
+    <div class="categories">
+      <div class="cate-menu">
+        <i
+          nz-icon
+          nzType="menu"
+          nzTheme="outline"
+          style="margin-right: 10px"
+        ></i
+        >Categories
+      </div>
+      <ul class="cate-content">
+        <li *ngFor="let category of categories">{{ category.name }}</li>
+      </ul>
+    </div>
+    <div class="cart">
+      <nz-input-group
+        [nzAddOnBefore]="addOnBeforeTemplate"
+        [nzSuffix]="addOnAfterTemplate"
+        nzSize="small"
+        style="width: 45%"
+      >
+        <input type="text" nz-input />
+      </nz-input-group>
+      <ng-template #addOnBeforeTemplate>
+        <nz-select [ngModel]="search">
+          <nz-option nzLabel="Tất cả danh mục" nzValue="all"></nz-option>
+          <nz-option nzLabel="Laptop" nzValue="laptop"></nz-option>
+          <nz-option nzLabel="Pc" nzValue="pc"></nz-option>
+          <nz-option nzLabel="Mouse" nzValue="mouse"></nz-option>
+          <nz-option nzLabel="Monitor" nzValue="monitor"></nz-option>
+          <nz-option nzLabel="Keyboard" nzValue="keyboard"></nz-option>
+        </nz-select>
+      </ng-template>
+      <ng-template #addOnAfterTemplate>
+        <button
+          style="
+            padding: 3px 12px;
+            border-radius: 3px;
+            background-color: rgb(24, 144, 255);
+            outline: none;
+            border: none;
+            cursor: pointer;
+          "
+        >
+          <i nz-icon nzType="search" style="color: white"></i>
+        </button>
+      </ng-template>
+      <div class="seen-product">
+        <button class="seen-product-btn">
+          Sản phẩm đã xem
+          <i
+            nz-icon
+            nzType="caret-down"
+            nzTheme="fill"
+            style="color: white; font-size: 10px"
+          ></i>
+        </button>
+        <div class="seen-product-content"></div>
+      </div>
+      <div class="icons">
+        <div>
+          <i nz-icon nzType="thunderbolt" nzTheme="outline"></i>
+          <p>Flash sale</p>
+        </div>
+        <div>
+          <i nz-icon nzType="laptop" nzTheme="outline"></i>
+          <p>Xây dựng PC</p>
+        </div>
+        <div>
+          <i nz-icon nzType="read" nzTheme="outline"></i>
+          <p>Tin tức</p>
+        </div>
+        <div>
+          <i nz-icon nzType="shopping-cart" nzTheme="outline"></i>
+          <p>Giỏ hàng</p>
+        </div>
+      </div>
     </div>
   </div>
   <div class="content-first">
     <div class="categories">
-      <ul>
-        <li style="background-color: rgb(24, 144, 255); color: white">
-          <i
-            nz-icon
-            nzType="menu"
-            nzTheme="outline"
-            style="margin-right: 10px"
-          ></i
-          >Categories
-        </li>
+      <div class="cate-menu">
+        <i
+          nz-icon
+          nzType="menu"
+          nzTheme="outline"
+          style="margin-right: 10px"
+        ></i
+        >Categories
+      </div>
+      <ul class="cate-content">
         <li *ngFor="let category of categories">{{ category.name }}</li>
       </ul>
     </div>
-    <div class="carousel">
-      <div class="installment-purchase">
-        <a href="#">Hướng dẫn mua hàng trả góp</a>
-      </div>
+    <div class="installment-purchase">
+      <a href="#">Hướng dẫn mua hàng trả góp</a>
+    </div>
+  </div>
+  <div class="carousel">
+    <div class="content">
       <nz-carousel nzAutoPlay [nzEffect]="effect">
         <div nz-carousel-content *ngFor="let index of array">
           <h3>{{ index }}</h3>
@@ -166,5 +303,92 @@
         </ng-template>
       </ng-container>
     </owl-carousel-o>
+  </div>
+  <div class="footer">
+    <div class="newsletter">
+      <div class="title">
+        <fa-icon [icon]="faTelegramPlane"></fa-icon>
+        <span>Đăng ký nhận chương trình khuyến mãi!</span>
+      </div>
+      <div class="email">
+        <nz-input-group
+          [nzSuffix]="suffixIconSearch"
+          style="width: 100%; padding: 10px 30px; border-radius: 15px"
+        >
+          <input type="text" nz-input placeholder="Your Email" />
+        </nz-input-group>
+        <ng-template #suffixIconSearch>
+          <i
+            nz-icon
+            nzType="mail"
+            nzTheme="outline"
+            style="color: rgb(24, 144, 255)"
+          ></i>
+        </ng-template>
+      </div>
+    </div>
+    <div class="ul-footer">
+      <div class="col">
+        <div style="text-align: center">
+          <img
+            src="../../../assets/logo2.png"
+            alt="logo"
+            width="100px"
+            height="100px"
+          />
+        </div>
+        <ul>
+          <li><strong>Công Ty TNHH Tin Học Van Tech</strong></li>
+          <li>
+            <fa-icon [icon]="faMapMarkedAlt"></fa-icon
+            ><span>130 Hàm Nghi - Thành phố Đà Nẵng</span>
+          </li>
+          <li>
+            <fa-icon [icon]="faMobileAlt"></fa-icon>
+            <span>0918.348.545 - 0905.170.007</span>
+          </li>
+          <li>
+            <fa-icon [icon]="faPhoneAlt"></fa-icon><span>0236.3689.300.</span>
+          </li>
+          <li>
+            <fa-icon [icon]="faEnvelope"></fa-icon>
+            <span>hotro@vantech.com.vn</span>
+          </li>
+          <li><strong>Phương thức thanh toán</strong></li>
+          <li></li>
+        </ul>
+      </div>
+      <div class="col">
+        <ul>
+          <li><strong>Thông tin chung</strong></li>
+          <li><a href="#">Giới thiệu về Van Tech</a></li>
+          <li><a href="#">Tin tuyển dụng</a></li>
+          <li><a href="#">Tin tức</a></li>
+          <li><a href="#">Tin khuyến mãi</a></li>
+          <li><a href="#">Liên hệ, góp ý</a></li>
+          <li><a href="#">Khách hàng doanh nghiệp</a></li>
+          <li><a href="#">Tài khoản công ty</a></li>
+        </ul>
+      </div>
+      <div class="col">
+        <ul>
+          <li><strong>Hỗ trợ khách hàng</strong></li>
+          <li><a href="#">Tìm hiểu về mua trả góp</a></li>
+          <li><a href="#">Chính sách vận chuyển, giao hàng</a></li>
+          <li><a href="#">Chính sách, quy định chung</a></li>
+          <li><a href="#">Chính sách bảo hành</a></li>
+          <li><a href="#">Chính sách đổi trả lại hàng</a></li>
+          <li><a href="#">Bảo mật thông tin khách hàng</a></li>
+        </ul>
+      </div>
+      <div class="col"></div>
+    </div>
+  </div>
+  <div style="text-align: center; padding: 15px 0">
+    <p style="margin: 0">
+      © 2019. CÔNG TY TNHH TIN HỌC Van Tech. Giấy phép kinh doanh: 0400480223 -
+      do sở KH & ĐT TP. Đà Nẵng cấp ngày: 25/01/2005.
+    </p>
+    <p style="margin: 0">All rights reserved.</p>
   </div>
 </div>

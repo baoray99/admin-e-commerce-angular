@@ -9,6 +9,9 @@ body {
   box-sizing: border-box;
   text-decoration: none;
   height: 100%;
+  ul {
+    list-style: none;
+  }
 }
 owl-carousel-o {
   position: relative;
