@@ -2,7 +2,7 @@ import { Component, OnInit, ElementRef, HostListener } from '@angular/core';
 import { Category } from 'src/app/models/category.models';
 import { CategoryService } from 'src/app/services/category.service';
 import { HttpClient } from '@angular/common/http';
-import { throwError } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 
 import { faTelegramPlane } from '@fortawesome/free-brands-svg-icons';
@@ -13,14 +13,9 @@ import {
   faEnvelope,
   faNewspaper,
 } from '@fortawesome/free-solid-svg-icons';
+import { PhotosApi } from 'src/app/models/photosapi.models';
+import { CartService } from 'src/app/services/cart.service';
 
-export interface PhotosApi {
-  albumId?: number;
-  id?: number;
-  title?: string;
-  url?: string;
-  thumbnailUrl?: string;
-}
 @Component({
   selector: 'app-client',
   templateUrl: './client.component.html',
@@ -30,7 +25,8 @@ export class ClientComponent implements OnInit {
   constructor(
     private categoryService: CategoryService,
     private readonly http: HttpClient,
-    private el: ElementRef
+    private el: ElementRef,
+    private cartService: CartService
   ) {}
   isSticky = false;
   @HostListener('window:scroll')
@@ -83,11 +79,14 @@ export class ClientComponent implements OnInit {
   faPhoneAlt = faPhoneAlt;
   faEnvelope = faEnvelope;
   faNewspaper = faNewspaper;
+  cart$: Observable<PhotosApi[]>;
   ngOnInit(): void {
     this.categoryService
       .getCategories()
       .subscribe((res) => (this.categories = res));
     this.fetch();
+    this.cartService.fetchData();
+    this.cart$ = this.cartService.cart$;
   }
   fetch() {
     const api = `https://jsonplaceholder.typicode.com/albums/1/photos?_start=0&_limit=${this.limit}`;
@@ -97,5 +96,9 @@ export class ClientComponent implements OnInit {
       (res) => (this.apiData = res),
       (err) => throwError(err)
     );
+  }
+  addToCart(item: PhotosApi) {
+    this.cartService.addToCart(item);
+    console.log(item);
   }
 }

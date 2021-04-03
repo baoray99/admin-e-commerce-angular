@@ -18,7 +18,6 @@ owl-carousel-o {
   top: 0;
   left: 0;
 }
-
 .owl-item {
   height: 400px;
   width: 100%;
@@ -28,9 +27,9 @@ owl-carousel-o {
   background-color: white;
   outline: none;
   border: none;
-  cursor: pointer;
   img {
     transition: all 0.3s ease;
+    cursor: pointer;
     &:hover {
       transform: scale(1.05, 1.05);
     }

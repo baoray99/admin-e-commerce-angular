@@ -48,6 +48,25 @@
       .icons {
         display: flex;
         align-items: center;
+        .cart {
+          position: relative;
+          .cart-content {
+            position: absolute;
+            display: none;
+            width: 300px;
+            height: 200px;
+            top: 67.5px;
+            left: 50%;
+            right: auto;
+            transform: translate(-50%, 0);
+            border-top: 2px solid rgb(24, 144, 255);
+            background-color: white;
+            z-index: 11;
+          }
+          &:hover .cart-content {
+            display: block;
+          }
+        }
         div {
           margin: 0 10px;
           display: flex;
@@ -74,6 +93,15 @@
     display: none;
     border: none;
     box-shadow: 0px 5px 8px -5px rgba(0, 0, 0, 0.75);
+    .cart {
+      .icons {
+        .cart {
+          .cart-content {
+            top: 56px;
+          }
+        }
+      }
+    }
     .categories {
       width: 25%;
       background-color: white;

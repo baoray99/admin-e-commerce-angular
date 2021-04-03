@@ -14,6 +14,9 @@ import { IconsProviderModule } from '../../icons-provider.module';
 import { MainRoutingModule } from './main-routing.module';
 import { MainComponent } from './main.component';
 
+// import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpConfigInterceptor } from '../../interceptors/http-config.interceptor';
+
 @NgModule({
   declarations: [MainComponent, HaspermissionDirective],
   imports: [
@@ -29,7 +32,7 @@ import { MainComponent } from './main.component';
     NzAvatarModule,
     NzDropDownModule,
   ],
-
   bootstrap: [MainComponent],
+ 
 })
 export class MainModule {}
