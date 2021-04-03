@@ -30,6 +30,7 @@ export class CartService implements OnInit {
   }
   addToCart(item: PhotosApi) {
     this.cart.unshift(item);
+    window.alert('Add to cart successfully !');
     this.updateCart();
   }
 }
