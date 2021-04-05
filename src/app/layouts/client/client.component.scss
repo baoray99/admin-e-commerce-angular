@@ -72,6 +72,7 @@
           display: flex;
           flex-direction: column;
           align-items: center;
+          cursor: pointer;
           p {
             font-size: 12px;
             font-weight: 700;
@@ -80,7 +81,6 @@
           i {
             font-size: 26px;
             color: rgb(24, 144, 255);
-            cursor: pointer;
             &:hover {
               opacity: 0.7;
             }
@@ -106,7 +106,7 @@
       width: 25%;
       background-color: white;
       position: relative;
-      &:hover .cate-content {
+      &:hover .cate-content2 {
         display: block;
       }
       .cate-menu {
@@ -164,7 +164,7 @@
       .cate-content {
         list-style: none;
         background-color: white;
-        // display: block;
+        display: none;
         position: absolute;
         width: 100%;
         padding: 0;

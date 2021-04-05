@@ -27,11 +27,11 @@ export class ClientComponent implements OnInit {
     private cartService: CartService,
     private router: Router
   ) {
+    var cateContent = document.querySelector('.cate-content');
     this.router.events.subscribe((res) => {
-      var cateContent = document.querySelector('.cate-content');
       if (res instanceof NavigationEnd && res.url == '/client/homepage') {
         cateContent.setAttribute('style', 'display: block');
-      } else cateContent.setAttribute('style', 'display: none');
+      }
     });
   }
   isSticky = false;
