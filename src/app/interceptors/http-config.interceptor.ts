@@ -29,13 +29,13 @@ export class HttpConfigInterceptor implements HttpInterceptor {
     return next.handle(request).pipe(
       map((event) => {
         if (event instanceof HttpResponse) {
-          console.log('processing response', event);
+          // console.log('processing response', event);
         }
         return event;
       }),
       catchError((error) => {
         if (error instanceof HttpErrorResponse) {
-          console.log('processing http error', error);
+          // console.log('processing http error', error);
         }
         return throwError(error);
       })

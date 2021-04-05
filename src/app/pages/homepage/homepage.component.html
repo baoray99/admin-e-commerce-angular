@@ -1,0 +1,53 @@
+<div class="carousel">
+  <div class="content">
+    <nz-carousel nzAutoPlay [nzEffect]="effect">
+      <div nz-carousel-content *ngFor="let index of array">
+        <h3>{{ index }}</h3>
+      </div>
+    </nz-carousel>
+  </div>
+</div>
+<div class="contact-us">
+  <div>Contact Us</div>
+  <marquee> Welcome to Van Tech Company Administator Web </marquee>
+</div>
+<div class="laptop" *ngFor="let cate of categories">
+  <div class="title">
+    <h2>{{ cate.name | uppercase }}</h2>
+    <a href="#">See All ></a>
+  </div>
+  <owl-carousel-o [options]="customOptions">
+    <ng-container *ngFor="let slide of cate?.randomProduct">
+      <ng-template class="slide" carouselSlide [id]="slide.id">
+        <div style="padding: 30px; height: 60%">
+          <img
+            [src]="slide.image[0]"
+            [alt]="slide.name"
+            [title]="slide.name"
+            height="100%"
+            routerLink="/client/product"
+            [queryParams]="{ id: slide._id }"
+          />
+        </div>
+        <div style="padding: 10px; height: 30%">
+          <a routerLink="/client/product" [queryParams]="{ id: slide._id }">{{
+            slide.name
+          }}</a>
+          <p>{{ slide.price | currency }}</p>
+        </div>
+        <div
+          class="cart-icon"
+          style="height: 10%; padding: 0 10px; text-align: right"
+        >
+          <i
+            nz-icon
+            nzType="shopping-cart"
+            nzTheme="outline"
+            style="font-size: 18px; color: rgba(0, 0, 0, 0.6); cursor: pointer"
+            (click)="addToCart(slide)"
+          ></i>
+        </div>
+      </ng-template>
+    </ng-container>
+  </owl-carousel-o>
+</div>

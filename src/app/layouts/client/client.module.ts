@@ -7,12 +7,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { NzLayoutModule } from 'ng-zorro-antd/layout';
 import { IconsProviderModule } from '../../icons-provider.module';
-import { NzCarouselModule } from 'ng-zorro-antd/carousel';
+
 import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
 import { NzSelectModule } from 'ng-zorro-antd/select';
-
-import { CarouselModule } from 'ngx-owl-carousel-o';
+import { NzBadgeModule } from 'ng-zorro-antd/badge';
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
@@ -23,15 +22,14 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     ClientRoutingModule,
     NzLayoutModule,
     IconsProviderModule,
-    NzCarouselModule,
-    CarouselModule,
     FontAwesomeModule,
     NzInputModule,
     NzDropDownModule,
     NzSelectModule,
     FormsModule,
     ReactiveFormsModule,
+    NzBadgeModule
   ],
-  exports: [CarouselModule],
+  exports: [],
 })
 export class ClientModule {}

@@ -1,18 +1,18 @@
 import { JsonpClientBackend } from '@angular/common/http';
 import { Injectable, OnInit } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { PhotosApi } from '../models/photosapi.models';
+import { Product } from '../models/product.models';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CartService implements OnInit {
-  private cart: PhotosApi[];
-  private displaycartSubject: BehaviorSubject<
-    PhotosApi[]
-  > = new BehaviorSubject<PhotosApi[]>([]);
+  private cart: Product[];
+  private displaycartSubject: BehaviorSubject<Product[]> = new BehaviorSubject<
+    Product[]
+  >([]);
 
-  cart$: Observable<PhotosApi[]> = this.displaycartSubject.asObservable();
+  cart$: Observable<Product[]> = this.displaycartSubject.asObservable();
   constructor() {}
   ngOnInit() {
     this.fetchData();
@@ -28,7 +28,7 @@ export class CartService implements OnInit {
     window.localStorage.setItem('cart', JSON.stringify(this.cart));
     this.updateData();
   }
-  addToCart(item: PhotosApi) {
+  addToCart(item: Product) {
     this.cart.unshift(item);
     window.alert('Add to cart successfully !');
     this.updateCart();

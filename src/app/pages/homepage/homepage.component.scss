@@ -1,0 +1,52 @@
+.laptop {
+  padding: 0 160px;
+  margin: 20px 0;
+  .title {
+    background-color: rgb(245, 245, 245);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+.carousel {
+  background-color: transparent;
+  padding: 0 160px;
+  display: flex;
+  justify-content: flex-end;
+  .content {
+    width: 75%;
+    [nz-carousel-content] {
+      text-align: center;
+      height: 420px;
+      line-height: 160px;
+      background: #364d79;
+      color: #fff;
+      overflow: hidden;
+    }
+
+    h3 {
+      color: #fff;
+      margin-bottom: 0;
+    }
+  }
+}
+.contact-us {
+  display: flex;
+  padding: 0 160px;
+  margin: 30px 0;
+  div {
+    width: 15%;
+    padding: 10px;
+    background-color: rgb(24, 144, 255);
+    color: white;
+    font-size: 15px;
+    font-weight: 500;
+    text-align: center;
+  }
+  marquee {
+    width: 85%;
+    background-color: white;
+    display: flex;
+    align-items: center;
+  }
+}
