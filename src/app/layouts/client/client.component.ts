@@ -13,8 +13,14 @@ import {
   faNewspaper,
 } from '@fortawesome/free-solid-svg-icons';
 import { CartService } from 'src/app/services/cart.service';
-import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
+import {
+  ActivatedRoute,
+  NavigationEnd,
+  NavigationStart,
+  Router,
+} from '@angular/router';
 import { Product } from 'src/app/models/product.models';
+import { ThrowStmt } from '@angular/compiler';
 
 @Component({
   selector: 'app-client',
@@ -27,11 +33,11 @@ export class ClientComponent implements OnInit {
     private cartService: CartService,
     private router: Router
   ) {
-    var cateContent = document.querySelector('.cate-content');
     this.router.events.subscribe((res) => {
+      var cateContent = document.querySelector('.cate-content');
       if (res instanceof NavigationEnd && res.url == '/client/homepage') {
-        cateContent.setAttribute('style', 'display: block');
-      }
+        cateContent.setAttribute('style', 'display: block;');
+      } else cateContent.removeAttribute('style');
     });
   }
   isSticky = false;
@@ -54,12 +60,14 @@ export class ClientComponent implements OnInit {
   faPhoneAlt = faPhoneAlt;
   faEnvelope = faEnvelope;
   faNewspaper = faNewspaper;
-  cart$: Observable<Product[]>;
+  cart$: Observable<any[]>;
+  totalCost$: Observable<number>;
   ngOnInit(): void {
     this.categoryService
       .getCategories()
       .subscribe((res) => (this.categories = res));
     this.cartService.fetchData();
     this.cart$ = this.cartService.cart$;
+    this.totalCost$ = this.cartService.totalCost$;
   }
 }

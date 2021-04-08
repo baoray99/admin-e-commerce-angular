@@ -20,6 +20,9 @@ import {
   ThunderboltOutline,
   ReadOutline,
   CaretDownFill,
+  StarFill,
+  SecurityScanFill,
+  ShoppingFill
 } from '@ant-design/icons-angular/icons';
 
 const icons = [
@@ -41,6 +44,9 @@ const icons = [
   ThunderboltOutline,
   ReadOutline,
   CaretDownFill,
+  StarFill,
+  SecurityScanFill,
+  ShoppingFill,
 ];
 
 @NgModule({

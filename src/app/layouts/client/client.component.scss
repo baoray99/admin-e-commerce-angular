@@ -54,7 +54,7 @@
             position: absolute;
             display: none;
             width: 300px;
-            height: 200px;
+            height: auto;
             top: 67.5px;
             left: 50%;
             right: auto;
@@ -62,10 +62,40 @@
             border-top: 2px solid rgb(24, 144, 255);
             background-color: white;
             z-index: 11;
+            div {
+              .name,
+              .count {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                width: 90%;
+                img {
+                  width: 15%;
+                }
+                div {
+                  width: 85%;
+                  font-size: 14px;
+                  overflow-x: hidden;
+                }
+              }
+            }
+          }
+          .total-price {
+            width: 90%;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
           }
           &:hover .cart-content {
             display: block;
           }
+          // .name,
+          // .count {
+          //   display: flex;
+          //   justify-content: space-between;
+          //   width: 100%;
+          // }
         }
         div {
           margin: 0 10px;

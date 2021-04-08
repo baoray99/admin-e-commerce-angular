@@ -1,1 +1,142 @@
-<p>{{ name }}</p>
+<div class="container" *ngIf="product">
+  <div class="content">
+    <div class="name">
+      <h1>{{ product.name }}</h1>
+      <div>
+        <p><span>Thương hiệu: </span>{{ product.brand.name }}</p>
+      </div>
+    </div>
+    <hr />
+    <div class="product">
+      <div class="image" style="width: 30%">
+        <div class="content">
+          <img width="100%" height="300px" src="{{ displayImg }}" alt="image" />
+          <div class="list-img">
+            <div
+              class="img"
+              *ngFor="let img of product.image; let i = index"
+              (click)="setImage(img)"
+            >
+              <img src="{{ img }}" alt="{{ i }}" width="100%" height="100%" />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="price" style="width: 50%">
+        <div class="sale-price">
+          <p>
+            Giá chính hãng: <strong>{{ product.price | currency }}</strong>
+          </p>
+          <p>
+            Giá bán:
+            <span style="font-size: 20px; color: crimson">{{
+              product.sales_price | currency
+            }}</span>
+          </p>
+        </div>
+        <hr />
+        <ul style="padding: 0">
+          <li *ngFor="let key of keys">
+            <p>
+              -{{ key }}:
+              <span>{{ lodash.get(product.product_detail, key) }}</span>
+            </p>
+          </li>
+        </ul>
+        <div class="promotion">
+          <div class="header"><p>Khuyến mãi</p></div>
+          <div class="content">
+            <ul style="list-style: none">
+              <li>
+                <strong style="font-size: 24px">
+                  <span>☀</span> Tặng Gói Quà Trị Giá
+                  <span style="color: crimson; font-size: 24px"
+                    >2.455.000 VNĐ</span
+                  >
+                  Bao gồm :
+                </strong>
+                <ul>
+                  <li>Balo MEGA</li>
+                  <li>Mouse không dây</li>
+                  <li>Pad Mouse</li>
+                  <li>Bộ vệ sinh Laptop</li>
+                  <li>
+                    Voucher trị giá 2 triệu , thay màn hình miễn phí nếu năm đầu
+                    bể vỡ
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <strong style="font-size: 20px"
+                  ><span>☀</span>
+                  Giảm 10% khi mua trên cùng đơn hàng : Túi, Balo, Ram, Quạt làm
+                  mát laptop, Phần mềm Virus, Tai nghe
+                </strong>
+              </li>
+              <li>
+                <strong style="font-size: 16px">
+                  <span>☀</span>
+                  Hỗ trợ cài đặt, bảo trì, vệ sinh máy miễn phí
+                </strong>
+              </li>
+              <li>
+                <strong style="font-size: 16px">
+                  <span>☀</span>
+                  Hỗ trợ cân màn hình laptop miễn phí
+                </strong>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="button">
+          <div class="above">
+            <button class="btn buy-now">Mua ngay</button>
+            <button class="btn add-cart" (click)="addToCart(product)">
+              Thêm vào giỏ hàng
+            </button>
+          </div>
+          <button class="btn-below">Mua trả góp</button>
+        </div>
+      </div>
+      <div class="support" style="width: 20%">
+        <div class="sp top">
+          <strong>Van Tech cam kết:</strong>
+          <ul style="padding: 0">
+            <li>
+              <p>
+                <span
+                  ><i
+                    nz-icon
+                    nzType="star"
+                    nzTheme="fill"
+                    style="color: rgb(24, 144, 255)"
+                  ></i
+                ></span>
+                Hàng chính hãng
+              </p>
+            </li>
+            <li>
+              <p>
+                <span
+                  ><i
+                    nz-icon
+                    nzType="security-scan"
+                    nzTheme="fill"
+                    style="color: rgb(24, 144, 255)"
+                  ></i
+                ></span>
+                Bảo hành 12 tháng
+              </p>
+            </li>
+            <li>
+              <p style="color: rgb(24, 144, 255)">
+                <span><i nz-icon nzType="shopping" nzTheme="fill"></i></span>
+                Giao hàng miễn phí toàn quốc(với đơn hàng trên 500.000 vnđ)
+              </p>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

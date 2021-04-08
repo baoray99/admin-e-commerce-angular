@@ -72,7 +72,23 @@
             </nz-badge>
             <div class="cart-content">
               <div *ngFor="let item of cart$ | async">
-                {{ item.name }}
+                <div class="name">
+                  <img src="{{ item.image[0] }}" alt="image" />
+                  <div>{{ item.name }}</div>
+                </div>
+                <div class="count">
+                  <p>
+                    x <span>{{ item.count }}</span>
+                  </p>
+                  <p>{{ item.price * item.count | currency }}</p>
+                </div>
+              </div>
+              <hr />
+              <div class="total-price">
+                <p style="font-size: 20px; color: rgb(24, 144, 255)">
+                  Tổng cộng:
+                </p>
+                <p>{{ totalCost$ | async | currency }}</p>
               </div>
             </div>
           </div>
@@ -161,7 +177,23 @@
             </nz-badge>
             <div class="cart-content">
               <div *ngFor="let item of cart$ | async">
-                {{ item.name }}
+                <div class="name">
+                  <img src="{{ item.image[0] }}" alt="image" />
+                  <div>{{ item.name }}</div>
+                </div>
+                <div class="count">
+                  <p>
+                    x <span>{{ item.count }}</span>
+                  </p>
+                  <p>{{ item.price * item.count | currency }}</p>
+                </div>
+              </div>
+              <hr />
+              <div class="total-price">
+                <p style="font-size: 20px; color: rgb(24, 144, 255)">
+                  Tổng cộng:
+                </p>
+                <p>{{ totalCost$ | async | currency }}</p>
               </div>
             </div>
           </div>

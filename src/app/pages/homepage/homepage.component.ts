@@ -22,11 +22,9 @@ export class HomepageComponent implements OnInit {
     private productService: ProductService
   ) {}
   customOptions: OwlOptions = {
-    loop: true,
+    loop: false,
     autoplay: true,
-    center: true,
     dots: false,
-    autoHeight: true,
     autoWidth: true,
     nav: true,
     navText: ['<', '>'],
@@ -61,6 +59,5 @@ export class HomepageComponent implements OnInit {
 
   addToCart(item: Product) {
     this.cartService.addToCart(item);
-    console.log(item);
   }
 }
