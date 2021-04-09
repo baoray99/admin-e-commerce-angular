@@ -43,8 +43,6 @@ export class CartService implements OnInit {
           if (item.price !== null) {
             this.totalCost += parseInt(item.price);
           }
-
-          console.log(this.totalCost);
           window.alert('Add to cart successfully !');
           this.updateCart();
         }
@@ -55,11 +53,25 @@ export class CartService implements OnInit {
       if (item.price !== null) {
         this.totalCost += parseInt(item.price);
       }
-
       window.alert('Add to cart successfully !');
-      console.log(this.totalCost);
-
       this.updateCart();
     }
+  }
+  deleteItem(data: Product) {
+    this.totalCost -= data.count * parseInt(data.price);
+    const index = this.cart.indexOf(data);
+    this.cart.splice(index, 1);
+    this.updateCart();
+  }
+  updateCost(data: Product) {
+    const index = this.cart.findIndex((item) => item._id === data._id);
+    const itemTemp = this.cart[index];
+    itemTemp.count = data.count;
+    this.cart.splice(index, 1, itemTemp); // xoa 1 phan tu va thay the bang phan tu moi
+    this.totalCost = 0;
+    this.cart.forEach((item) => {
+      this.totalCost += parseInt(item.price) * item.count;
+    });
+    this.updateCart();
   }
 }

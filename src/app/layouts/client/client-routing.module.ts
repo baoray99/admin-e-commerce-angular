@@ -22,6 +22,13 @@ const routes: Routes = [
             '../../pages/product-details-client/product-details-client.module'
           ).then((m) => m.ProductDetailsClientModule),
       },
+      {
+        path: 'cart',
+        loadChildren: () =>
+          import('../../pages/cart-page/cart-page.module').then(
+            (m) => m.CartPageModule
+          ),
+      },
     ],
   },
 ];
