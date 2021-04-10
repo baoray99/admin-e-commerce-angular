@@ -13,14 +13,11 @@ import {
   faNewspaper,
 } from '@fortawesome/free-solid-svg-icons';
 import { CartService } from 'src/app/services/cart.service';
-import {
-  ActivatedRoute,
-  NavigationEnd,
-  NavigationStart,
-  Router,
-} from '@angular/router';
+import { NavigationEnd, Router } from '@angular/router';
 import { Product } from 'src/app/models/product.models';
-import { ThrowStmt } from '@angular/compiler';
+// import {takeLast} from 'rxjs/operators'
+import 'lodash';
+declare var _: any;
 
 @Component({
   selector: 'app-client',
@@ -62,6 +59,7 @@ export class ClientComponent implements OnInit {
   faNewspaper = faNewspaper;
   cart$: Observable<any[]>;
   totalCost$: Observable<number>;
+  seenProduct: Product[];
   ngOnInit(): void {
     this.categoryService
       .getCategories()
@@ -69,5 +67,8 @@ export class ClientComponent implements OnInit {
     this.cartService.fetchData();
     this.cart$ = this.cartService.cart$;
     this.totalCost$ = this.cartService.totalCost$;
+    this.cartService.seenProduct$.subscribe((res) => {
+      this.seenProduct = _.take(res, 6);
+    });
   }
 }

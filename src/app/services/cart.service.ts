@@ -1,7 +1,7 @@
-import { JsonpClientBackend } from '@angular/common/http';
 import { Injectable, OnInit } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Product } from '../models/product.models';
+import { takeLast } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
@@ -9,14 +9,21 @@ import { Product } from '../models/product.models';
 export class CartService implements OnInit {
   private cart: Product[];
   private totalCost: number = 0;
+  private seenProduct: Product[];
   private displaycartSubject: BehaviorSubject<Product[]> = new BehaviorSubject<
     Product[]
   >([]);
   private totalCostSubject: BehaviorSubject<number> = new BehaviorSubject<number>(
     0
   );
+  private displayseenproductSubject: BehaviorSubject<
+    Product[]
+  > = new BehaviorSubject<Product[]>([]);
   cart$: Observable<Product[]> = this.displaycartSubject.asObservable();
   totalCost$: Observable<number> = this.totalCostSubject.asObservable();
+  seenProduct$: Observable<
+    Product[]
+  > = this.displayseenproductSubject.asObservable();
   constructor() {}
   ngOnInit() {
     this.fetchData();
@@ -25,15 +32,33 @@ export class CartService implements OnInit {
     this.displaycartSubject.next(this.cart);
     this.totalCostSubject.next(this.totalCost);
   }
+  updateSeen() {
+    this.displayseenproductSubject.next(this.seenProduct);
+  }
   fetchData() {
     this.cart = JSON.parse(window.localStorage.getItem('cart')) || [];
     this.totalCost = JSON.parse(window.localStorage.getItem('totalCost')) || 0;
+    this.seenProduct =
+      JSON.parse(window.localStorage.getItem('seen-product')) || [];
     this.updateData();
+    this.updateSeen();
+    // this.seenProduct$.pipe(takeLast(6));
   }
   updateCart() {
     window.localStorage.setItem('cart', JSON.stringify(this.cart));
     window.localStorage.setItem('totalCost', JSON.stringify(this.totalCost));
     this.updateData();
+  }
+  updateSeenProduct() {
+    window.localStorage.setItem(
+      'seen-product',
+      JSON.stringify(this.seenProduct)
+    );
+    this.updateSeen();
+  }
+  addToSeenProduct(item: Product) {
+    this.seenProduct.unshift(item);
+    this.updateSeenProduct();
   }
   addToCart(item: Product) {
     if (this.cart.includes(item)) {

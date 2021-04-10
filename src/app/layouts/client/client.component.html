@@ -50,7 +50,23 @@
             style="color: white"
           ></i>
         </button>
-        <div class="seen-product-content"></div>
+        <div class="seen-product-content">
+          <div *ngFor="let item of seenProduct" class="item">
+            <div style="height: 60%">
+              <img src="{{ item.image[0] }}" alt="image" width="100%" />
+            </div>
+            <div class="name">
+              <p
+                routerLink="/client/product"
+                [queryParams]="{ id: item._id }"
+                style="height: 50px; overflow: hidden"
+              >
+                {{ item.name }}
+              </p>
+              <p>{{ item.price | currency }}</p>
+            </div>
+          </div>
+        </div>
       </div>
       <div class="icons">
         <div>
@@ -79,7 +95,12 @@
               <div *ngFor="let item of cart$ | async">
                 <div class="name">
                   <img src="{{ item.image[0] }}" alt="image" />
-                  <div>{{ item.name }}</div>
+                  <div
+                    routerLink="/client/product"
+                    [queryParams]="{ id: item._id }"
+                  >
+                    {{ item.name }}
+                  </div>
                 </div>
                 <div class="count">
                   <p>
@@ -160,7 +181,23 @@
             style="color: white; font-size: 10px"
           ></i>
         </button>
-        <div class="seen-product-content"></div>
+        <div class="seen-product-content">
+          <div *ngFor="let item of seenProduct" class="item">
+            <div style="height: 60%; width: 100%">
+              <img src="{{ item.image[0] }}" alt="image" width="100%" />
+            </div>
+            <div class="name">
+              <p
+                routerLink="/client/product"
+                [queryParams]="{ id: item._id }"
+                style="height: 50px; overflow: hidden"
+              >
+                {{ item.name }}
+              </p>
+              <p>{{ item.price | currency }}</p>
+            </div>
+          </div>
+        </div>
       </div>
       <div class="icons">
         <div>
@@ -189,7 +226,12 @@
               <div *ngFor="let item of cart$ | async">
                 <div class="name">
                   <img src="{{ item.image[0] }}" alt="image" />
-                  <div>{{ item.name }}</div>
+                  <div
+                    routerLink="/client/product"
+                    [queryParams]="{ id: item._id }"
+                  >
+                    {{ item.name }}
+                  </div>
                 </div>
                 <div class="count">
                   <p>

@@ -31,18 +31,36 @@
         }
         .seen-product-content {
           position: absolute;
+          overflow: hidden;
+          padding: 5px;
           display: none;
           width: 620px;
-          height: 200px;
+          height: auto;
           left: 50%;
           right: auto;
           transform: translate(-50%, 0);
           border-top: 2px solid rgb(24, 144, 255);
           background-color: white;
-          z-index: 11;
+          z-index: 999;
+        }
+        .item {
+          width: calc(20% - 5px);
+          height: 230px;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          .name {
+            height: 40%;
+            p {
+              cursor: pointer;
+              &:hover {
+                color: rgb(24, 144, 255);
+              }
+            }
+          }
         }
         &:hover .seen-product-content {
-          display: block;
+          display: flex;
         }
       }
       .icons {
@@ -76,6 +94,10 @@
                   width: 85%;
                   font-size: 14px;
                   overflow-x: hidden;
+                  cursor: pointer;
+                  &:hover {
+                    color: rgb(24, 144, 255);
+                  }
                 }
               }
             }
