@@ -16,7 +16,7 @@
     <h2>{{ cate.name | uppercase }}</h2>
     <a href="#">See All ></a>
   </div>
-  <owl-carousel-o [options]="customOptions">
+  <owl-carousel-o [options]="customOptions" class="owl-carousel-home">
     <ng-container *ngFor="let slide of cate.randomProduct">
       <ng-template class="slide" carouselSlide [id]="slide.id">
         <div style="padding: 30px; height: 60%">
@@ -24,7 +24,7 @@
             [src]="slide.image[0]"
             [alt]="slide.name"
             [title]="slide.name"
-            height="100%"
+            width="100%"
             routerLink="/client/product"
             [queryParams]="{ id: slide._id }"
           />

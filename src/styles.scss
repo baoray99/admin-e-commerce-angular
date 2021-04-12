@@ -13,39 +13,80 @@ body {
     list-style: none;
   }
 }
-owl-carousel-o {
+.owl-carousel-home {
   position: relative;
   top: 0;
   left: 0;
-}
-.owl-item {
-  height: 400px;
-  width: 100%;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: 50% 50%;
-  background-color: white;
-  outline: none;
-  border: none;
-  img {
+  .owl-item {
+    height: 400px;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 50% 50%;
+    background-color: white;
+    outline: none;
+    border: none;
     transition: all 0.3s ease;
-    cursor: pointer;
     &:hover {
-      transform: scale(1.1, 1.1);
+      box-shadow: 0px 0px 15px -2px rgba(0, 0, 0, 0.75);
+      z-index: 2;
+    }
+    img {
+      transition: all 0.3s ease;
+      cursor: pointer;
+      &:hover {
+        transform: scale(1.1, 1.1);
+      }
     }
   }
+  .owl-prev {
+    margin: 0;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .owl-next {
+    margin: 0;
+    position: absolute;
+    right: -25px;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
 }
-.owl-prev {
-  margin: 0;
-  position: absolute;
-  left: 0;
-  top: 50%;
-  transform: translate(-50%, -50%);
-}
-.owl-next {
-  margin: 0;
-  position: absolute;
-  right: -25px;
-  top: 50%;
-  transform: translate(-50%, -50%);
-}
+// .owl-carousel-products {
+//   position: relative;
+//   top: 0;
+//   left: 0;
+//   .owl-item {
+//     height: 400px;
+//     width: 100%;
+//     background-repeat: no-repeat;
+//     background-size: cover;
+//     background-position: 50% 50%;
+//     background-color: white;
+//     outline: none;
+//     border: none;
+//     img {
+//       transition: all 0.3s ease;
+//       cursor: pointer;
+//       &:hover {
+//         transform: scale(1.1, 1.1);
+//       }
+//     }
+//   }
+//   // .owl-prev {
+//   //   margin: 0;
+//   //   position: absolute;
+//   //   left: 0;
+//   //   top: 50%;
+//   //   transform: translate(-50%, -50%);
+//   // }
+//   // .owl-next {
+//   //   margin: 0;
+//   //   position: absolute;
+//   //   right: -25px;
+//   //   top: 50%;
+//   //   transform: translate(-50%, -50%);
+//   // }
+// }

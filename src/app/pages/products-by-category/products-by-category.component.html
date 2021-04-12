@@ -1,1 +1,41 @@
-<div *ngFor="let item of products">{{ item.name }}</div>
+<div class="container">
+  <div *ngFor="let slide of tempProducts" class="item">
+    <div style="padding: 30px; height: 60%">
+      <img
+        [src]="slide.image[0]"
+        [alt]="slide.name"
+        [title]="slide.name"
+        width="100%"
+        routerLink="/client/product"
+        [queryParams]="{ id: slide._id }"
+      />
+    </div>
+    <div style="padding: 10px; height: 30%">
+      <a routerLink="/client/product" [queryParams]="{ id: slide._id }">{{
+        slide.name
+      }}</a>
+      <p>{{ slide.price | currency }}</p>
+    </div>
+    <div
+      class="cart-icon"
+      style="height: 10%; padding: 0 10px; text-align: right"
+    >
+      <i
+        nz-icon
+        nzType="shopping-cart"
+        nzTheme="outline"
+        style="font-size: 18px; color: rgba(0, 0, 0, 0.6); cursor: pointer"
+        (click)="addToCart(slide)"
+      ></i>
+    </div>
+  </div>
+
+  <div class="pagnitation">
+    <nz-pagination
+      [nzPageIndex]="pageIndex"
+      [nzTotal]="products?.length"
+      [nzPageSize]="20"
+      (nzPageIndexChange)="changeIndex($event)"
+    ></nz-pagination>
+  </div>
+</div>
