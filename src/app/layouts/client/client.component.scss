@@ -34,7 +34,7 @@
           overflow: hidden;
           padding: 5px;
           display: none;
-          width: 620px;
+          width: 720px;
           height: auto;
           left: 50%;
           right: auto;
@@ -191,7 +191,7 @@
   .sticky {
     padding: 10px 165px;
     position: fixed;
-    z-index: 9;
+    z-index: 9999;
     top: 0;
   }
   .content-first {

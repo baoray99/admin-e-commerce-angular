@@ -135,7 +135,13 @@
         >Categories
       </div>
       <ul class="cate-content2">
-        <li *ngFor="let category of categories">{{ category.name }}</li>
+        <li
+          *ngFor="let category of categories"
+          routerLink="/client/products"
+          [queryParams]="{ id_category: category._id }"
+        >
+          {{ category.name }}
+        </li>
       </ul>
     </div>
     <div class="cart">
@@ -266,7 +272,13 @@
         >Categories
       </div>
       <ul class="cate-content">
-        <li *ngFor="let category of categories">{{ category.name }}</li>
+        <li
+          *ngFor="let category of categories"
+          routerLink="/client/products"
+          [queryParams]="{ id_category: category._id }"
+        >
+          {{ category.name }}
+        </li>
       </ul>
     </div>
     <div class="installment-purchase">

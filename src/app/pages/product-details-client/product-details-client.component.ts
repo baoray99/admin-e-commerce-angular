@@ -18,10 +18,10 @@ export class ProductDetailsClientComponent implements OnInit {
     private cartService: CartService,
     private router: Router
   ) {
-    // this.route.queryParamMap.subscribe((query) => {
-    //   const id = query.get('id');
-    //   this.router.navigate([`/client/product?id=${{ id }}`]);
-    // });
+    this.route.queryParamMap.subscribe((query) => {
+      const id = query.get('id');
+      this.getProductById(id);
+    });
   }
   lodash = _;
   product: Product;
@@ -34,10 +34,7 @@ export class ProductDetailsClientComponent implements OnInit {
     this.productService.getProductById(id).subscribe((res) => {
       this.product = res;
       this.displayImg = res.image[0];
-      this.keys = this.lodash.sampleSize(
-        Object.keys(this.product?.product_detail),
-        6
-      );
+      this.keys = this.lodash.sampleSize(Object.keys(res.product_detail), 6);
       this.cartService.addToSeenProduct(res);
     });
   }

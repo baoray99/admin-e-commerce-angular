@@ -57,8 +57,17 @@ export class CartService implements OnInit {
     this.updateSeen();
   }
   addToSeenProduct(item: Product) {
-    this.seenProduct.unshift(item);
-    this.updateSeenProduct();
+    if (this.seenProduct.some((data) => data.name === item.name)) {
+      console.log('existed');
+      this.updateSeenProduct();
+    } else {
+      console.log('not exist');
+      this.seenProduct.unshift(item);
+      if (this.seenProduct.length > 6) {
+        this.seenProduct.splice(6, 1);
+      }
+      this.updateSeenProduct();
+    }
   }
   addToCart(item: Product) {
     if (this.cart.includes(item)) {
