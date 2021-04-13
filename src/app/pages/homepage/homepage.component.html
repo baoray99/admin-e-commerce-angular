@@ -14,7 +14,9 @@
 <div class="laptop" *ngFor="let cate of categories">
   <div class="title">
     <h2>{{ cate.name | uppercase }}</h2>
-    <a href="#">See All ></a>
+    <a routerLink="/client/products" [queryParams]="{ id_category: cate._id }"
+      >See All ></a
+    >
   </div>
   <owl-carousel-o [options]="customOptions" class="owl-carousel-home">
     <ng-container *ngFor="let slide of cate.randomProduct">
@@ -30,10 +32,17 @@
           />
         </div>
         <div style="padding: 10px; height: 30%">
-          <a routerLink="/client/product" [queryParams]="{ id: slide._id }">{{
-            slide.name
-          }}</a>
-          <p>{{ slide.price | currency }}</p>
+          <div style="height: 90%">
+            <a
+              style="word-wrap: break-word"
+              routerLink="/client/product"
+              [queryParams]="{ id: slide._id }"
+              >{{ slide.name }}</a
+            >
+          </div>
+          <div style="height: 10%">
+            <p>{{ slide.price | currency }}</p>
+          </div>
         </div>
         <div
           class="cart-icon"

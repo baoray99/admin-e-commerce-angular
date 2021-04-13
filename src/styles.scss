@@ -38,6 +38,9 @@ body {
         transform: scale(1.1, 1.1);
       }
     }
+    a{
+      word-wrap: break-word;
+    }
   }
   .owl-prev {
     margin: 0;

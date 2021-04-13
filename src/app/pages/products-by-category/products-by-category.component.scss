@@ -34,4 +34,12 @@
     //   float: right;
     // }
   }
+  .select-brand {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    nz-select {
+      width: 200px;
+    }
+  }
 }

@@ -5,8 +5,10 @@ import { ProductsByCategoryRoutingModule } from './products-by-category-routing.
 import { ProductsByCategoryComponent } from './products-by-category.component';
 
 import { NzPaginationModule } from 'ng-zorro-antd/pagination';
+import { NzSelectModule } from 'ng-zorro-antd/select';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { IconsProviderModule } from '../../icons-provider.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -16,7 +18,9 @@ import { IconsProviderModule } from '../../icons-provider.module';
     ProductsByCategoryRoutingModule,
     NzPaginationModule,
     CarouselModule,
-    IconsProviderModule
+    IconsProviderModule,
+    NzSelectModule,
+    FormsModule
   ]
 })
 export class ProductsByCategoryModule { }

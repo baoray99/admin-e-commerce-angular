@@ -1,4 +1,19 @@
 <div class="container">
+  <div class="select-brand">
+    <nz-select
+      nzShowSearch
+      nzAllowClear
+      nzPlaceHolder="Select a brand"
+      [(ngModel)]="selectedValue"
+      (ngModelChange)="filterBrand($event)"
+    >
+      <nz-option
+        *ngFor="let brand of brands"
+        nzLabel="{{ brand.name }}"
+        nzValue="{{ brand._id }}"
+      ></nz-option>
+    </nz-select>
+  </div>
   <div *ngFor="let slide of tempProducts" class="item">
     <div style="padding: 30px; height: 60%">
       <img
@@ -11,10 +26,17 @@
       />
     </div>
     <div style="padding: 10px; height: 30%">
-      <a routerLink="/client/product" [queryParams]="{ id: slide._id }">{{
-        slide.name
-      }}</a>
-      <p>{{ slide.price | currency }}</p>
+      <div style="height: 90%">
+        <a
+          style="word-wrap: break-word"
+          routerLink="/client/product"
+          [queryParams]="{ id: slide._id }"
+          >{{ slide.name }}</a
+        >
+      </div>
+      <div style="height: 10%">
+        <p>{{ slide.price | currency }}</p>
+      </div>
     </div>
     <div
       class="cart-icon"
