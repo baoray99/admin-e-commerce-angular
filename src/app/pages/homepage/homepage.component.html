@@ -1,9 +1,19 @@
 <div class="carousel">
   <div class="content">
-    <nz-carousel nzAutoPlay [nzEffect]="effect">
-      <div nz-carousel-content *ngFor="let index of array">
-        <h3>{{ index }}</h3>
+    <nz-carousel [nzEffect]="effect" [nzDotRender]="dots" nzAutoPlay>
+      <div nz-carousel-content *ngFor="let index of array" style="background: url({{index}}); background-size: cover; background-position: center;">
+        <!-- <h3>{{ index }}</h3> -->
       </div>
+      <ng-template #dots>
+        <button
+          style="
+            display: block;
+            height: 3px;
+            background: black;
+            outline: none;
+          "
+        ></button>
+      </ng-template>
     </nz-carousel>
   </div>
 </div>

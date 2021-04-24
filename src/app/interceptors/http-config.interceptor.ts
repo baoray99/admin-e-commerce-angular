@@ -19,13 +19,12 @@ export class HttpConfigInterceptor implements HttpInterceptor {
     request: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
-    // if (this.authService.authToken) {
-    //   const authReq = req.clone({
-    //     headers: req.headers.set('Authorization', this.authService.authToken),
-    //   });
-    //   console.log('Making an authorized request');
-    //   req = authReq;
-    // }
+    const token: string = JSON.parse(localStorage.getItem('token'));
+    if (token) {
+      request = request.clone({
+        headers: request.headers.set('Authorization', 'Bearer ' + token),
+      });
+    }
     return next.handle(request).pipe(
       map((event) => {
         if (event instanceof HttpResponse) {

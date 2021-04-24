@@ -7,6 +7,9 @@ import { NzTableModule } from 'ng-zorro-antd/table';
 import { NzPopconfirmModule } from 'ng-zorro-antd/popconfirm';
 import { NzInputModule } from 'ng-zorro-antd/input';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NzButtonModule } from 'ng-zorro-antd/button';
+import { NzModalModule } from 'ng-zorro-antd/modal';
+import { NzFormModule } from 'ng-zorro-antd/form';
 
 @NgModule({
   declarations: [CartPageComponent],
@@ -16,7 +19,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     NzTableModule,
     FormsModule,
     NzPopconfirmModule,
-    NzInputModule
+    NzInputModule,
+    ReactiveFormsModule,
+    NzButtonModule,
+    NzModalModule,
+    NzFormModule
   ],
 })
 export class CartPageModule {}

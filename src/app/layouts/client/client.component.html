@@ -1,4 +1,31 @@
 <div class="container">
+  <div class="login__navbar">
+    <div class="left">
+      <div class="icons">
+        <fa-icon [icon]="faPhoneVolume"></fa-icon>
+        <a href="#">Bán hàng trực tuyến</a>
+      </div>
+      <div class="icons">
+        <fa-icon [icon]="faMoneyBillAlt"></fa-icon>
+        <a href="#">Hướng dẫn trả góp</a>
+      </div>
+      <div class="icons">
+        <fa-icon [icon]="faTags"></fa-icon> <a href="#">Khuyến mãi</a>
+      </div>
+      <button class="btn__baogia">Yêu cầu báo giá</button>
+    </div>
+    <div class="right">
+      <fa-icon [icon]="faUserCircle"></fa-icon>
+      <span *ngIf="user$ |async; else elseBlock">
+        {{ (user$ | async).name }}
+      </span>
+      <ng-template #elseBlock
+        ><a href="#">Đăng ký</a>
+        <span>/</span>
+        <a href="#">Đăng nhập</a></ng-template
+      >
+    </div>
+  </div>
   <div class="navbar">
     <div class="logo">
       <img
@@ -51,7 +78,7 @@
           ></i>
         </button>
         <div class="seen-product-content">
-          <div *ngFor="let item of seenProduct" class="item">
+          <div *ngFor="let item of seenProduct | async" class="item">
             <div style="height: 60%">
               <img src="{{ item.image[0] }}" alt="image" width="100%" />
             </div>
@@ -83,7 +110,7 @@
         </div>
         <div>
           <div class="cart">
-            <nz-badge [nzCount]="(cart$ | async).length">
+            <nz-badge [nzCount]="(cart$ | async)?.length">
               <i
                 nz-icon
                 nzType="shopping-cart"
@@ -220,7 +247,7 @@
         </div>
         <div>
           <div class="cart">
-            <nz-badge [nzCount]="(cart$ | async).length">
+            <nz-badge [nzCount]="(cart$ | async)?.length">
               <i
                 nz-icon
                 nzType="shopping-cart"
@@ -285,7 +312,6 @@
       <a href="#">Hướng dẫn mua hàng trả góp</a>
     </div>
   </div>
-
   <router-outlet></router-outlet>
   <div class="footer">
     <div class="newsletter">

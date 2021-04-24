@@ -1,67 +1,128 @@
 <div class="container">
-    <div class="content">
-        <nz-table
-        #editRowTable
-        [nzData]="cart$ | async"
-        nzShowPagination="false"
-      >
-        <thead>
-          <tr>
-            <th nzWidth="50%">Sản phẩm</th>
-            <th>Đơn giá</th>
-            <th>Số lượng</th>
-            <th>Thành tiền</th>
-            <th>Xoá</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let data of editRowTable.data" class="editable-row">
-            <td>
-              <div>
-                <img src="{{ data.image[0] }}" alt="img" width="20%" />
-                <div>{{ data.name }}</div>
-              </div>
-            </td>
-            <td>{{ data.price | currency }}</td>
-            <td>
-              <div
-                class="editable-cell"
-                [hidden]="editId === data._id"
-                (click)="startEdit(data._id)"
-              >
-                {{ data.count }}
-              </div>
-              <input
-                [hidden]="editId !== data._id"
-                type="number"
-                style="width: 30%"
-                nz-input
-                [(ngModel)]="data.count"
-                (blur)="stopEdit(data)"
-              />
-            </td>
-            <td>{{ data.price * data.count | currency }}</td>
-            <td>
-              <a
-                nz-popconfirm
-                nzPopconfirmTitle="Sure to delete?"
-                (nzOnConfirm)="deleteRow(data)"
-                >Delete</a
-              >
-            </td>
-          </tr>
-        </tbody>
-      </nz-table>
-      <div class="total-cost">
-        <div class="voucher">
-          <input nz-input placeholder="Mã Voucher" />
-          <button>Áp dụng</button>
-        </div>
-        <div class="cost">
-          <p><span>Tổng tiền: </span>{{ totalCost$ | async | currency }}</p>
-          <em>Đơn hàng trên 500k được Free ship toàn quốc</em>
-        </div>
+  <div class="content">
+    <nz-table #editRowTable [nzData]="cart$ | async" nzShowPagination="false">
+      <thead>
+        <tr>
+          <th nzWidth="50%">Sản phẩm</th>
+          <th>Đơn giá</th>
+          <th>Số lượng</th>
+          <th>Thành tiền</th>
+          <th>Xoá</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let data of editRowTable.data" class="editable-row">
+          <td>
+            <div>
+              <img src="{{ data.image[0] }}" alt="img" width="20%" />
+              <div>{{ data.name }}</div>
+            </div>
+          </td>
+          <td>{{ data.price | currency }}</td>
+          <td>
+            <div
+              class="editable-cell"
+              [hidden]="editId === data._id"
+              (click)="startEdit(data._id)"
+            >
+              {{ data.count }}
+            </div>
+            <input
+              [hidden]="editId !== data._id"
+              type="number"
+              style="width: 30%"
+              nz-input
+              [(ngModel)]="data.count"
+              (blur)="stopEdit(data)"
+            />
+          </td>
+          <td>{{ data.price * data.count | currency }}</td>
+          <td>
+            <a
+              nz-popconfirm
+              nzPopconfirmTitle="Sure to delete?"
+              (nzOnConfirm)="deleteRow(data)"
+              >Delete</a
+            >
+          </td>
+        </tr>
+      </tbody>
+    </nz-table>
+    <div class="total-cost">
+      <div class="voucher">
+        <input nz-input placeholder="Mã Voucher" />
+        <button>Áp dụng</button>
+      </div>
+      <div class="cost">
+        <p><span>Tổng tiền: </span>{{ totalCost$ | async | currency }}</p>
+        <em>Đơn hàng trên 500k được Free ship toàn quốc</em>
       </div>
     </div>
-  
+    <div class="submit-order" *ngIf="(cart$ | async).length > 0">
+      <button nz-button nzType="primary" (click)="openModalSubmit()">
+        Thanh toán
+      </button>
+      <nz-modal
+        [(nzVisible)]="isVisible"
+        nzTitle="{{ isToken ? 'Nhập số điện thoại' : 'Đăng nhập' }}"
+        (nzOnCancel)="handleCancel()"
+        (nzOnOk)="handleOk()"
+        [nzFooter]="null"
+        [nzContent]="isToken ? phone : login"
+      >
+        <ng-template #login>
+          <form
+            nz-form
+            [formGroup]="validateForm"
+            class="login-form"
+            (ngSubmit)="submitForm()"
+          >
+            <nz-form-item>
+              <nz-form-control nzErrorTip="Please input your username!">
+                <nz-input-group nzPrefixIcon="user">
+                  <input
+                    type="text"
+                    nz-input
+                    formControlName="userName"
+                    placeholder="Username"
+                  />
+                </nz-input-group>
+              </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+              <nz-form-control nzErrorTip="Please input your Password!">
+                <nz-input-group nzPrefixIcon="lock">
+                  <input
+                    type="password"
+                    nz-input
+                    formControlName="password"
+                    placeholder="Password"
+                  />
+                </nz-input-group>
+              </nz-form-control>
+            </nz-form-item>
+            <button
+              nz-button
+              class="login-form-button login-form-margin"
+              [nzType]="'primary'"
+              [nzLoading]="loading"
+            >
+              {{ loading ? "Loging in ..." : "Log in" }}
+            </button>
+            Or <a> register now! </a>
+          </form></ng-template
+        >
+        <ng-template #phone>
+          <input
+            nz-input
+            placeholder="Nhập số điện thoại của bạn"
+            [(ngModel)]="userPhone"
+          />
+          <button nz-button nzType="primary" (click)="submitCart()">
+            Đặt hàng
+          </button></ng-template
+        >
+      </nz-modal>
+    </div>
+  </div>
 </div>

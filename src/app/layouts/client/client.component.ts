@@ -11,12 +11,17 @@ import {
   faPhoneAlt,
   faEnvelope,
   faNewspaper,
+  faPhoneVolume,
+  faMoneyBillAlt,
+  faTags,
+  faUserCircle,
 } from '@fortawesome/free-solid-svg-icons';
 import { CartService } from 'src/app/services/cart.service';
 import { NavigationEnd, Router } from '@angular/router';
 import { Product } from 'src/app/models/product.models';
-// import {takeLast} from 'rxjs/operators'
 import 'lodash';
+import { AuthService } from 'src/app/services/auth.service';
+import { User } from 'src/app/models/user.models';
 declare var _: any;
 
 @Component({
@@ -28,7 +33,8 @@ export class ClientComponent implements OnInit {
   constructor(
     private categoryService: CategoryService,
     private cartService: CartService,
-    private router: Router
+    private router: Router,
+    private authService: AuthService
   ) {
     this.router.events.subscribe((res) => {
       var cateContent = document.querySelector('.cate-content');
@@ -57,18 +63,23 @@ export class ClientComponent implements OnInit {
   faPhoneAlt = faPhoneAlt;
   faEnvelope = faEnvelope;
   faNewspaper = faNewspaper;
+  faPhoneVolume = faPhoneVolume;
+  faMoneyBillAlt = faMoneyBillAlt;
+  faTags = faTags;
+  faUserCircle = faUserCircle;
   cart$: Observable<any[]>;
   totalCost$: Observable<number>;
-  seenProduct: Product[];
+  seenProduct: Observable<Product[]>;
+  user$: Observable<User>;
   ngOnInit(): void {
     this.categoryService
       .getCategories()
       .subscribe((res) => (this.categories = res));
+    this.authService.fetchUser();
+    this.user$ = this.authService.user$;
     this.cartService.fetchData();
     this.cart$ = this.cartService.cart$;
     this.totalCost$ = this.cartService.totalCost$;
-    this.cartService.seenProduct$.subscribe((res) => {
-      this.seenProduct = _.take(res, 6);
-    });
+    this.seenProduct = this.cartService.seenProduct$;
   }
 }

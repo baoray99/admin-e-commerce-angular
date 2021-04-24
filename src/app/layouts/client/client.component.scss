@@ -1,5 +1,44 @@
 .container {
   background-color: rgb(245, 245, 245);
+  .login__navbar {
+    padding: 10px 160px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    fa-icon {
+      color: rgb(24, 144, 255);
+    }
+    a {
+      color: rgba(153, 153, 153, 1);
+      &:hover {
+        color: rgb(24, 144, 255);
+      }
+    }
+    .left {
+      width: 70%;
+      display: flex;
+      align-items: center;
+      .icons {
+        margin-right: 15px;
+      }
+      .btn__baogia {
+        margin-left: 20px;
+        font-size: 12px;
+        padding: 5px 10px;
+        border-radius: 15px;
+        border: none;
+        outline: none;
+        background-color: rgba(0, 0, 0, 0.3);
+      }
+    }
+    .right {
+      display: flex;
+      align-items: center;
+      fa-icon{
+        margin-right: 5px;
+      }
+    }
+  }
   .navbar,
   .navbar-scroll {
     width: 100%;

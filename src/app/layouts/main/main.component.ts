@@ -30,7 +30,7 @@ export class MainComponent implements OnInit {
       password: [null, [Validators.required]],
     });
     this.authService
-      .getMe(JSON.parse(window.localStorage.getItem('token')))
+      .getMe(/*JSON.parse(window.localStorage.getItem('token'))*/)
       .subscribe((res) => (this.user = res));
   }
   getCategories() {

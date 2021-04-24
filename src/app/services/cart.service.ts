@@ -1,7 +1,6 @@
 import { Injectable, OnInit } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Product } from '../models/product.models';
-import { takeLast } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
@@ -107,5 +106,10 @@ export class CartService implements OnInit {
       this.totalCost += parseInt(item.price) * item.count;
     });
     this.updateCart();
+  }
+  submitedCart(){
+    this.cart=[];
+    this.totalCost=0
+    this.updateCart()
   }
 }

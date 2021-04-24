@@ -41,7 +41,12 @@ export class HomepageComponent implements OnInit {
     },
   };
   categories: Category[];
-  array = [1, 2, 3, 4];
+  array = [
+    'https://lh3.googleusercontent.com/AXgapN8LC3uBkEns5j44gRzMOdkajwE2MUqXtbBEXGE-g4konoHxkfKo8566EADTDgv0U2iLp5a3yebNN0k7lPNOiHT6f5SQ=w1920-rw',
+    'https://storage.googleapis.com/teko-gae.appspot.com/media/image/2021/3/24/20210324_605d7da3-f78e-4411-a52a-55eeeb754408.jpg',
+    'https://lh3.googleusercontent.com/co6o531pxSg_zL589TTQHReI07caHOgsCQ4RiO0GyGIQLjvc3HjOvN0n3JquqLHUPrcYI-JRc606pqm75-LV4KuU4aDhtGml=w1920-rw',
+  ];
+  // array = [1, 2, 3, 4];
   effect = 'scrollx';
   ngOnInit(): void {
     this.categoryService.getCategories().subscribe((res) => {

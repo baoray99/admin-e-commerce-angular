@@ -14,6 +14,7 @@ import { NzSelectModule } from 'ng-zorro-antd/select';
 import { NzBadgeModule } from 'ng-zorro-antd/badge';
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { CartPageComponent } from 'src/app/pages/cart-page/cart-page.component';
 
 @NgModule({
   declarations: [ClientComponent],
