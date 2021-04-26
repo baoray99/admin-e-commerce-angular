@@ -16,13 +16,13 @@
     </div>
     <div class="right">
       <fa-icon [icon]="faUserCircle"></fa-icon>
-      <span *ngIf="user$ |async; else elseBlock">
+      <span *ngIf="user$ | async; else elseBlock">
         {{ (user$ | async).name }}
       </span>
       <ng-template #elseBlock
-        ><a href="#">Đăng ký</a>
+        ><a routerLink="/client/register">Đăng ký</a>
         <span>/</span>
-        <a href="#">Đăng nhập</a></ng-template
+        <a routerLink="/client/login">Đăng nhập</a></ng-template
       >
     </div>
   </div>
@@ -215,7 +215,7 @@
           ></i>
         </button>
         <div class="seen-product-content">
-          <div *ngFor="let item of seenProduct" class="item">
+          <div *ngFor="let item of seenProduct | async" class="item">
             <div style="height: 60%; width: 100%">
               <img src="{{ item.image[0] }}" alt="image" width="100%" />
             </div>

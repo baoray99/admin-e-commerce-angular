@@ -64,64 +64,44 @@
       </button>
       <nz-modal
         [(nzVisible)]="isVisible"
-        nzTitle="{{ isToken ? 'Nhập số điện thoại' : 'Đăng nhập' }}"
+        nzTitle="Nhập số điện thoại"
         (nzOnCancel)="handleCancel()"
         (nzOnOk)="handleOk()"
         [nzFooter]="null"
-        [nzContent]="isToken ? phone : login"
       >
-        <ng-template #login>
-          <form
-            nz-form
-            [formGroup]="validateForm"
-            class="login-form"
-            (ngSubmit)="submitForm()"
-          >
-            <nz-form-item>
-              <nz-form-control nzErrorTip="Please input your username!">
-                <nz-input-group nzPrefixIcon="user">
-                  <input
-                    type="text"
-                    nz-input
-                    formControlName="userName"
-                    placeholder="Username"
-                  />
-                </nz-input-group>
-              </nz-form-control>
-            </nz-form-item>
-            <nz-form-item>
-              <nz-form-control nzErrorTip="Please input your Password!">
-                <nz-input-group nzPrefixIcon="lock">
-                  <input
-                    type="password"
-                    nz-input
-                    formControlName="password"
-                    placeholder="Password"
-                  />
-                </nz-input-group>
-              </nz-form-control>
-            </nz-form-item>
-            <button
-              nz-button
-              class="login-form-button login-form-margin"
-              [nzType]="'primary'"
-              [nzLoading]="loading"
-            >
-              {{ loading ? "Loging in ..." : "Log in" }}
-            </button>
-            Or <a> register now! </a>
-          </form></ng-template
+        <form
+          nz-form
+          [formGroup]="validateForm"
+          class="phone-form"
+          (ngSubmit)="submitCart()"
         >
-        <ng-template #phone>
-          <input
-            nz-input
-            placeholder="Nhập số điện thoại của bạn"
-            [(ngModel)]="userPhone"
-          />
-          <button nz-button nzType="primary" (click)="submitCart()">
-            Đặt hàng
-          </button></ng-template
-        >
+          <nz-form-item>
+            <nz-form-control nzHasFeedback [nzErrorTip]="combineTpl">
+              <nz-input-group nzPrefixIcon="phone">
+                <input
+                  type="text"
+                  nz-input
+                  formControlName="phone"
+                  placeholder="Số điện thoại"
+                  minlength="10"
+                  maxlength="10"
+                />
+                <ng-template #combineTpl let-control>
+                  <ng-container *ngIf="control.hasError('maxlength')"
+                    >Số điện thoại không hợp lệ</ng-container
+                  >
+                  <ng-container *ngIf="control.hasError('minlength')"
+                    >Số điện thoại không hợp lệ</ng-container
+                  >
+                  <ng-container *ngIf="control.hasError('required')"
+                    >Hãy nhập số điện thoại</ng-container
+                  >
+                </ng-template>
+              </nz-input-group>
+            </nz-form-control>
+          </nz-form-item>
+          <button nz-button nzType="primary">Đặt hàng</button>
+        </form>
       </nz-modal>
     </div>
   </div>

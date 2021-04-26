@@ -53,4 +53,9 @@ export class AuthService {
       )
       .pipe(catchError(this.errorHandle));
   }
+  register(data: any): Observable<any> {
+    return this.httpClient
+      .post<any>('https://dacnpm-test.herokuapp.com/users/', data)
+      .pipe(catchError(this.errorHandle));
+  }
 }

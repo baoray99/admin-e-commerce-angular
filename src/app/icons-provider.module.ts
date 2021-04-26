@@ -22,7 +22,7 @@ import {
   CaretDownFill,
   StarFill,
   SecurityScanFill,
-  ShoppingFill
+  ShoppingFill, PhoneOutline
 } from '@ant-design/icons-angular/icons';
 
 const icons = [
@@ -47,6 +47,7 @@ const icons = [
   StarFill,
   SecurityScanFill,
   ShoppingFill,
+  PhoneOutline
 ];
 
 @NgModule({

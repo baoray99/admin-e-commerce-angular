@@ -36,6 +36,20 @@ const routes: Routes = [
             '../../pages/products-by-category/products-by-category.module'
           ).then((m) => m.ProductsByCategoryModule),
       },
+      {
+        path: 'login',
+        loadChildren: () =>
+          import('../../pages/login-page/login-page.module').then(
+            (m) => m.LoginPageModule
+          ),
+      },
+      {
+        path: 'register',
+        loadChildren: () =>
+          import('../../pages/register-page/register-page.module').then(
+            (m) => m.RegisterPageModule
+          ),
+      },
     ],
   },
 ];

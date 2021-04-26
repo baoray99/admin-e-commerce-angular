@@ -53,20 +53,11 @@
       }
     }
     .submit-order {
-      .login-form {
-        max-width: 300px;
-      }
-
-      .login-form-margin {
-        margin-bottom: 16px;
-      }
-
-      .login-form-forgot {
-        float: right;
-      }
-
-      .login-form-button {
-        width: 100%;
+      display: flex;
+      justify-content: flex-end;
+      padding: 10px 5px;
+      button {
+        width: 20%;
       }
     }
   }

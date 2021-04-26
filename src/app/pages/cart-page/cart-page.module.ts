@@ -10,6 +10,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzModalModule } from 'ng-zorro-antd/modal';
 import { NzFormModule } from 'ng-zorro-antd/form';
+import { NzMessageModule } from 'ng-zorro-antd/message';
 
 @NgModule({
   declarations: [CartPageComponent],
@@ -23,7 +24,8 @@ import { NzFormModule } from 'ng-zorro-antd/form';
     ReactiveFormsModule,
     NzButtonModule,
     NzModalModule,
-    NzFormModule
+    NzFormModule,
+    NzMessageModule,
   ],
 })
 export class CartPageModule {}
