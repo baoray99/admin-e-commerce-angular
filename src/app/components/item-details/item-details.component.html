@@ -1,0 +1,19 @@
+<nz-drawer
+  [nzClosable]="false"
+  [nzVisible]="visible"
+  nzPlacement="right"
+  nzTitle="Chi tiết đơn hàng"
+  nzWidth="600px"
+  (nzOnClose)="close()"
+>
+  <div *ngFor="let item of data" class="item">
+    <div class="content">
+      <strong>Tên sản phẩm: </strong><span>{{ item.product_name }}</span> <br />
+      <strong>Tổng giá: </strong><span>{{ item.price | currency }}</span
+      ><br />
+      <strong>Số lượng: </strong><span>{{ item.quantity }}</span
+      ><br />
+    </div>
+    <nz-divider></nz-divider>
+  </div>
+</nz-drawer>

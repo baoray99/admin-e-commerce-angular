@@ -82,4 +82,10 @@ export class ClientComponent implements OnInit {
     this.totalCost$ = this.cartService.totalCost$;
     this.seenProduct = this.cartService.seenProduct$;
   }
+  logOut() {
+    window.localStorage.removeItem('token');
+    this.authService.fetchUser();
+    this.user$ = this.authService.user$;
+    this.router.navigate(['/client/homepage'])
+  }
 }

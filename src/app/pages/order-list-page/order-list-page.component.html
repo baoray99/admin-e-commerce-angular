@@ -1,0 +1,33 @@
+<div
+  class="container"
+>
+  <nz-table #basicTable [nzData]="listOrder" nzLoading="{{ loading }}">
+    <thead>
+      <tr>
+        <th>STT</th>
+        <th>SĐT Người nhận</th>
+        <th>Tổng tiền</th>
+        <th>Trạng thái đơn hàng</th>
+        <th>Chi tiết đơn hàng</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of basicTable.data; let i = index">
+        <td>{{ i + 1 }}</td>
+        <td>{{ data.customer_phone }}</td>
+        <td>{{ data.totalPrice | currency }}</td>
+        <td>{{ data.status }}</td>
+        <td>
+          <button
+            nz-button
+            nzType="primary"
+            (click)="openItemDetails(data.orderItem)"
+          >
+            Xem chi tiết
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </nz-table>
+  <app-item-details #items [data]="orderItems"></app-item-details>
+</div>

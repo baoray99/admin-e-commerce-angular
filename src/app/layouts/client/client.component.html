@@ -16,7 +16,13 @@
     </div>
     <div class="right">
       <fa-icon [icon]="faUserCircle"></fa-icon>
-      <span *ngIf="user$ | async; else elseBlock">
+      <span
+        *ngIf="(user$ | async) != null; else elseBlock"
+        nz-dropdown
+        nzTrigger="click"
+        [nzDropdownMenu]="menu"
+        nzPlacement="bottomRight"
+      >
         {{ (user$ | async).name }}
       </span>
       <ng-template #elseBlock
@@ -24,6 +30,22 @@
         <span>/</span>
         <a routerLink="/client/login">Đăng nhập</a></ng-template
       >
+      <nz-dropdown-menu #menu="nzDropdownMenu">
+        <ul nz-menu>
+          <li
+            nz-menu-item
+            routerLink="/client/order"
+            [queryParams]="{ id_user: (user$ | async)?._id }"
+          >
+            <i nz-icon nzType="solution" nzTheme="outline"></i
+            ><span>Đơn hàng của tôi</span>
+          </li>
+          <li nz-menu-item nzDanger (click)="logOut()">
+            <i nz-icon nzType="logout" nzTheme="outline"></i>
+            <span>Log out</span>
+          </li>
+        </ul>
+      </nz-dropdown-menu>
     </div>
   </div>
   <div class="navbar">
@@ -33,6 +55,8 @@
         alt="logo"
         width="70px"
         height="70px"
+        routerLink="/client/homepage"
+        style="cursor: pointer"
       />
     </div>
     <div class="cart">

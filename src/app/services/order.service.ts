@@ -18,4 +18,11 @@ export class OrderService {
       .post<any>(this.url, data)
       .pipe(catchError(this.errorHandle));
   }
+  getOrdersById(id: string): Observable<any> {
+    return this.httpClient
+      .post<any>(this.url + 'orderUser/', {
+        id_user: id,
+      })
+      .pipe(catchError(this.errorHandle));
+  }
 }

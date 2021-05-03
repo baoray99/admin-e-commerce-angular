@@ -50,6 +50,13 @@ const routes: Routes = [
             (m) => m.RegisterPageModule
           ),
       },
+      {
+        path: 'order',
+        loadChildren: () =>
+          import('../../pages/order-list-page/order-list-page.module').then(
+            (m) => m.OrderListPageModule
+          ),
+      },
     ],
   },
 ];

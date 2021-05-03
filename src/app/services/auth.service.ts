@@ -28,7 +28,7 @@ export class AuthService {
   fetchUser() {
     this.getMe().subscribe(
       (res) => ((this.user = res), (this.userID = res._id), this.updateData()),
-      (error) => ((this.user = null), (this.userID = ''))
+      (error) => ((this.user = null), (this.userID = ''), this.updateData())
     );
   }
   errorHandle(error: HttpErrorResponse) {

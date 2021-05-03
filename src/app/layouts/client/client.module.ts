@@ -12,6 +12,7 @@ import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
 import { NzSelectModule } from 'ng-zorro-antd/select';
 import { NzBadgeModule } from 'ng-zorro-antd/badge';
+import { NzMenuModule } from 'ng-zorro-antd/menu';
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
@@ -28,7 +29,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     NzSelectModule,
     FormsModule,
     ReactiveFormsModule,
-    NzBadgeModule
+    NzBadgeModule,
+    NzMenuModule
   ],
   exports: [],
 })
