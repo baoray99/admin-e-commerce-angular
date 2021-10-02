@@ -34,7 +34,7 @@
     .right {
       display: flex;
       align-items: center;
-      fa-icon{
+      fa-icon {
         margin-right: 5px;
       }
     }
@@ -90,7 +90,7 @@
           justify-content: center;
           .name {
             height: 40%;
-            p {
+            .product__name {
               cursor: pointer;
               &:hover {
                 color: rgb(24, 144, 255);
