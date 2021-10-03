@@ -22,7 +22,7 @@
       <li
         nz-menu-item
         nzMatchRouter
-        routerLink="/welcome"
+        routerLink="/admin/welcome"
         style="outline: none"
       >
         <i nz-icon nzType="dashboard"></i>
@@ -37,7 +37,7 @@
         <ul>
           <li nz-menu-item nzMatchRouter *ngFor="let category of categories">
             <a
-              [routerLink]="['/products']"
+              [routerLink]="['/admin/products']"
               [queryParams]="{ id_category: category._id }"
               >{{ category.name }}</a
             >

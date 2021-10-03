@@ -11,7 +11,7 @@
       (ngModelChange)="onSearch()"
     />
   </nz-input-group>
-  <button nz-button nzType="dashed" [routerLink]="['/product/add']">
+  <button nz-button nzType="dashed" [routerLink]="['/admin/product/add']">
     <i nz-icon nzType="plus"></i> Add Product
   </button>
   <ng-template #suffixIconSearch>
@@ -57,7 +57,7 @@
         </button>
         <nz-divider nzType="vertical"></nz-divider>
         <button nz-button nzType="primary">
-          <a routerLink="/product/edit" [queryParams]="{ id: data._id }"
+          <a routerLink="/admin/product/edit" [queryParams]="{ id: data._id }"
             >Edit</a
           >
         </button>

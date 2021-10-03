@@ -49,7 +49,7 @@ export class LoginComponent implements OnInit {
               'token',
               JSON.stringify(res.accessToken)
             );
-            this.router.navigate(['welcome']);
+            this.router.navigate(['/admin/welcome']);
             this.loginSuccess();
           },
           (error) => {
